@@ -1,0 +1,135 @@
+body {
+	background-color: #f5f5f5;
+	font-family: 'Lato', sans-serif;
+	min-height: 100%;
+}
+
+header nav {
+	background-color: white;
+	height: 80px;
+	padding: 0 10px;
+	font-family: 'Roboto Condensed', serif;
+}
+
+header ul {
+	list-style-type: none;
+    display: flex;
+    margin-bottom: 0px;
+}
+
+header ul > li {
+	line-height: 80px;
+    width: auto;
+	text-align: center;
+	text-transform: uppercase;
+	padding: 0 20px;
+}
+
+header ul > li > a {
+	color: #777;
+}
+
+header a:hover {
+    color: #f5bb00;
+    text-decoration: none;
+}
+
+header ul > li:active {
+	background-color:#f5bb00;
+}
+
+header ul > li:active ~ a {
+	color:white;
+}
+
+li.logo a {
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #f5bb00;
+    font-family: cursive;
+    text-shadow: 4px 3px 2px rgba(0,0,0,.1);
+}
+
+
+/* MISE EN PAGE DU BLOC GAUCHE*/
+
+section {
+	margin: 2rem 22rem;
+}
+
+.bloc-text {
+    margin-left: 30px;
+}
+
+.bloc-items-left {
+    padding-right: 10px;
+}
+
+.post-item {
+    display: flex;
+    background-color: white;
+	margin-bottom: 30px;
+	padding: 30px 0 30px 30px;
+}
+
+.bloc-img > div:first-child {
+	width: 230px;
+	height: 210px;;
+	background-image: url('../public/images/paque.jpg');
+	background-size: cover;
+}
+
+p.book-name {
+    color: #f5bb00;
+    font-family: 'Roboto Condensed', serif;
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 0;
+}
+
+
+h3.bloc-title {font-family: 'Roboto Condensed', serif;color: #50514f;font-size: 1.5em;}
+
+.bloc-infos {
+    width: 100%;
+    display: flex;
+    color: #cecece;
+    font-size: 0.9em;
+}
+
+.date-part {
+    margin-left: 1.2rem;
+}
+
+.comments-part {
+    margin-left: 1.2rem;
+}
+
+.bloc-infos a {
+    color: #cecece;
+}
+
+.author-part span {
+    margin-left: 0.3rem;
+}
+
+p.bloc-teaser {
+    color: #999;
+    margin-top: 0.9rem;
+    font-size: 0.9em;
+}
+
+p.bloc-button {
+    margin-top: 1.5em;
+}
+
+p.bloc-button a {
+    padding: 12px 28px;
+    background-color: #f5bb00;
+    color: white;
+    font-family: 'Roboto Condensed';
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
