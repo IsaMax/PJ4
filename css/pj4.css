@@ -4,6 +4,17 @@ body {
 	min-height: 100%;
 }
 
+section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
 header nav {
 	background-color: white;
 	height: 80px;
@@ -53,10 +64,6 @@ li.logo a {
 
 /* MISE EN PAGE DU BLOC GAUCHE*/
 
-section {
-	margin: 2rem 22rem;
-}
-
 .bloc-text {
     margin-left: 30px;
 }
@@ -72,12 +79,25 @@ section {
 	padding: 30px 0 30px 30px;
 }
 
+.post-item .bloc-img {
+	overflow: hidden;
+    width: 409px;
+    height: 210px;
+}
+
 .bloc-img > div:first-child {
 	width: 230px;
 	height: 210px;;
 	background-image: url('../public/images/paque.jpg');
 	background-size: cover;
+	transition: all 0.5s;
 }
+
+.bloc-img > div:first-child:hover {
+
+	transform: scale(1.2);
+}
+
 
 p.book-name {
     color: #f5bb00;
@@ -101,17 +121,11 @@ h3.bloc-title {font-family: 'Roboto Condensed', serif;color: #50514f;font-size: 
     margin-left: 1.2rem;
 }
 
-.comments-part {
-    margin-left: 1.2rem;
-}
+.comments-part { margin-left: 1.2rem; }
 
-.bloc-infos a {
-    color: #cecece;
-}
+.bloc-infos a { color: #cecece; }
 
-.author-part span {
-    margin-left: 0.3rem;
-}
+.author-part span { margin-left: 0.3rem; }
 
 p.bloc-teaser {
     color: #999;
@@ -119,9 +133,7 @@ p.bloc-teaser {
     font-size: 0.9em;
 }
 
-p.bloc-button {
-    margin-top: 1.5em;
-}
+p.bloc-button { margin-top: 1.5em; }
 
 p.bloc-button a {
     padding: 12px 28px;
@@ -131,5 +143,121 @@ p.bloc-button a {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8em;
+	font-weight: bold;
+	position: relative;
+	transition-delay: 1s;
+}
+
+p.bloc-button a:hover:after {
+    background: black;
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: .15;
+}
+
+p.bloc-button a:before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 92%;
+    height: 81%;
+    border: 1px dashed rgba(255,255,255,.3);
+    transform: translate(-50%, -50%);
+}
+
+p.bloc-button a:hover:before {
+	border: 1px dashed rgba(255,255,255,1);
+}
+
+/* STYLE BLOC DROITE */
+
+.chapter .thumbnail {
+
+	height: 80px;
+	width: 80px;
+	background-image: url('../public/images/paque.jpg');
+	background-size: cover;
+}
+
+.chapter h4 {
+	color: #777;
+    font-family: 'Patrick Hand', serif;
+    font-size: 1.1em;
+    vertical-align: middle;
     font-weight: bold;
+    padding-top: 14px;
+    padding-right: 10px;
+}
+
+.chapter, .comm {
+	display: flex;
+    margin: 0px 20px;
+    padding: 15px 0;
+    border-top: 1px solid #f1f1f1;
+	
+}
+
+.comm {
+	border-top: 1px solid #e4dbdb;
+}
+
+.chapter > div:last-child {
+    padding-left: 1.3rem;
+    align-self: center;
+    height: 80px;
+	width: 78%;
+    background: #f9f9f9;
+}
+
+.book-full { background: white; }
+
+.book-full h3, .comments-part-right h3 {
+	font-size: 1em;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+	padding: 20px 0 20px 0px;
+	margin-left: 20px;
+    color: #50514f;
+	letter-spacing: 1px;
+	margin-bottom: 0px;
+	border-bottom: 1px solid #f5bb00;
+    width: 98px;
+}
+
+.comments-part-right h3 { width: 190px; }
+
+.avatar img {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+}
+
+.comm { display: flex; }
+
+.comm p {
+	margin: 0;
+	color: #777777;
+}
+
+.comms-body { margin-left: 1rem; }
+
+p.comm-text { font-size: 0.9em; }
+
+p.comm-author a, p.comm-more a { color: #666; }
+
+p.comm-author a:hover, p.comm-more a:hover { color: #f5bb00; }
+
+.comments-part-right { background: white; padding-top: 20px; }
+
+
+
+@media only screen and (max-width: 1200px) {
+	section {
+		padding: 30px;
+	}
 }
