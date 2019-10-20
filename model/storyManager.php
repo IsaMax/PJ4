@@ -1,7 +1,7 @@
 <?php
 
-// récupère un article selon un id(GET), affiche les commentaires liés et permet d'en ajouter et SIGNALEMENT
-require 'model/storyManager.php';
+// récupère un article selon un id(GET), affiche les commentaires liés et permet d'en ajouter
+require_once 'model/storyManager.php';
 
 class storyManager extends Manager {
 
@@ -16,22 +16,20 @@ class storyManager extends Manager {
 
     public function getComments($idStory) {
 
-        $c = $this->$data->prepare('SELECT *, DATE_FORMAT(date_commentaire, "à écrit le %d/%m/%Y à %H:%m")
+        $sc= $this->$data->prepare('SELECT *, DATE_FORMAT(date_commentaire, "à écrit le %d/%m/%Y à %H:%m")
                              FROM commentaires WHERE id_billet = ?');
-        $c->execute(array($idStory));
-        return $c;
+        $sc->execute(array($idStory));
+        return $sc;
     }
 
     public function writeComment($idStory) {
 
-        $wc = $this->$data->prepare('INSERT INTO commentaires(id_billet, pseudo, commentaire)
+        $swc = $this->$data->prepare('INSERT INTO commentaires(id_billet, pseudo, commentaire)
                                      VALUES(:id_billet, :pseudo, :commentaire)');
-        $wc->execute(array(
+        $swc->execute(array(
             ':id_billet' => $_GET['id'],
             ':pseudo' => $_POST['pseudo'],
             ':commentaire' => $_POST['commentaire'],
         ));
-        return $wc;
     }
-    
 }

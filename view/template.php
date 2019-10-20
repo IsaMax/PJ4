@@ -17,15 +17,36 @@
 <body>
 
     <header>
-        <?php require 'view/navbarView.php'; ?>
+        <?php require 'view/navbar/navbarView.php'; ?>
     </header>
 
     <main>
-       <?= $content; ?>
+        <section>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                        
+                            <?= $placeStories; ?>
+         
+                    </div>
+
+                    <!--  PARTIE DROITE -->
+                    <div class="col-md-4">
+                        <div class="bloc-items-right">
+
+                            <?= $placeRecentStories; ?>
+
+                            <?= $placeLastComments; ?>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <?php require 'view/footerView.php'; ?>
+        <?php require 'view/footer/footerView.php'; ?>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
