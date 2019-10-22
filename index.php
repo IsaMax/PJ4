@@ -12,16 +12,21 @@ try {
             case 'accueil':
                 require 'controller/homeController.php';
                 $homepage = new homeController();
+                $homepage->getAllStories();
             break;
             case 'histoire':
 
                 if(isset($_GET['chapitre'])) {
-                    $chapitre = (int) $_GET['chapitre'];
-                    if($chapitre > 0) {                 // ici répérer le nbr d'article pour réguler $chapitre
-                        require 'controller/storyController.php';
-                        $story = new storyController();
-                        $story-> ;
+                    $idChapter = (int) $_GET['chapitre'];
+                    if($idChapter > 0) {                 // ici répérer le nbr d'article pour réguler $chapitre
+                        require 'controller/chapterController.php';
+                        $story = new chapterController();
+                        $story->getChapter($idChapter);
+                        $story->getChapterComments($idChapter);
                     }
+                }
+                else {
+                    trow new Exception('Aucun article ne correspond à votre requête');
                 }
             break;  
             case 'biographie':
@@ -32,7 +37,7 @@ try {
             case 'contact':
                 require 'controller/contactController.php';
                 $contact = new contactController();
-                $contact-> ;
+                $contact->getMessage();
             break;
             default:
                 throw new Exception('La page que vous recherchez n\'existe pas !');

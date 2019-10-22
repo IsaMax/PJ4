@@ -30,7 +30,7 @@ while($storyData = $stories->fetch() AND $commentsData = $nbrComments->fetch()) 
                 </div>
             </div>
             <p class="bloc-teaser"> <?= htmlspecialchars($storyData['contenu']); ?> </p>
-            <p class="bloc-button"><a href="">Découvrir</a></p>
+            <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
         </div>
     </div>
 

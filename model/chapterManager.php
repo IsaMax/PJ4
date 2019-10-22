@@ -22,13 +22,13 @@ class storyManager extends Manager {
         return $sc;
     }
 
-    public function writeComment($idStory) {
+    public function addComment($idStory) {
 
         $swc = $this->$data->prepare('INSERT INTO commentaires(id_billet, pseudo, commentaire)
                                      VALUES(:id_billet, :pseudo, :commentaire)');
         $swc->execute(array(
             ':id_billet' => $_GET['id'],
-            ':pseudo' => $_POST['pseudo'],
+            ':pseudo' => $_POST['pseudo'], // voir pour le récupérer directement lors de l'authentification
             ':commentaire' => $_POST['commentaire'],
         ));
     }

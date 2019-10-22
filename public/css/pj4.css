@@ -67,11 +67,11 @@ li.logo a {
 .bloc-text {
     margin-left: 30px;
 }
-
+/* 
 .bloc-items-left {
     padding-right: 10px;
 }
-
+ */
 .post-item {
     display: flex;
     background-color: white;
@@ -88,7 +88,7 @@ li.logo a {
 .bloc-img > div:first-child {
 	width: 230px;
 	height: 210px;;
-	background-image: url('../public/images/paque.jpg');
+	background-image: url('../images/paque.jpg');
 	background-size: cover;
 	transition: all 0.5s;
 }
@@ -180,7 +180,7 @@ p.bloc-button a:hover:before {
 
 	height: 80px;
 	width: 80px;
-	background-image: url('../public/images/paque.jpg');
+	background-image: url('../images/paque.jpg');
 	background-size: cover;
 }
 
@@ -216,7 +216,7 @@ p.bloc-button a:hover:before {
 
 .book-full { background: white; }
 
-.book-full h3, .comments-part-right h3 {
+/* .book-full h3, .comments-part-right  */h3 {
 	font-size: 1em;
     text-transform: uppercase;
     font-family: 'Roboto Condensed', sans-serif;
@@ -254,6 +254,225 @@ p.comm-author a:hover, p.comm-more a:hover { color: #f5bb00; }
 
 .comments-part-right { background: white; padding-top: 20px; }
 
+
+/******* STYLE PAGE ARTICLE ********/
+
+.article {
+    background-color: white;
+    padding: 1.9rem;
+    margin-top: 2.1rem;
+    text-align: justify;
+    color: #999;
+    font-family: 'Lato', sans-serif;
+    line-height: 27px;
+}
+
+.article h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    text-transform: uppercase;
+   /*  text-align: center; */
+    color: #50514f;
+    font-size: 36px;
+    margin-bottom: 2em;
+}
+
+.article p { text-indent: 40px;}
+
+.image-head img {
+    width: 100%;;
+}
+
+.bloc-arrow p {
+    text-indent: 0px;;
+}
+
+.bloc-arrow .row > div {
+    cursor: pointer;
+}
+
+.content-body hr {
+    margin: 3rem 0;
+}
+
+.bloc-arrow i {
+    display: block;
+    color: white;
+    background: #f5bb00;
+    padding: 26px 10px;
+
+}
+
+.arrow-left, .arrow-right { clear: both;}
+.arrow-left i {
+    float: left;
+}
+
+.arrow-right i {
+    float: right;
+}
+
+p.title-previous a, p.title-next a {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #f5bb00;
+    font-weight: bold;
+}
+
+p.title-previous a:hover, p.title-next a:hover {
+    color: #50514f;
+} 
+
+p.title-previous {
+    margin-left: 3rem;
+    margin-bottom: 0px;
+}
+
+p.title-next {
+    text-align: end;
+    margin-right: 3rem;
+    margin-bottom: 0px;
+}
+
+.bloc-arrow .legend {
+    text-align: center;
+    font-size: 12px;
+}
+
+/** STYLE BLOC-COMMENTAIRES **/
+
+.bloc-comments {
+    background-color: white;
+    padding: 1.9rem;
+    padding-right: 10rem;
+}
+
+h3.nbr-comments {
+    width: 140px;
+    margin-left: 0;
+}
+
+.comment {
+    display: flex;
+    clear: both;
+}
+
+.avatar {
+    background-image: url('../images/avatar-mini.jpg');
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    float: left;
+}
+
+span.comment-name {
+    color: black;
+    font-weight: bold;
+}
+
+.commentaire {
+    width: auto;
+    height: auto;
+    font-size: 0.9em;
+    background-color: #f5f5f5;
+    border-top-left-radius: 25px;
+    padding: 10px 16px 14px 17px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+
+.infos-comment a {
+    color: #f5bb00;
+}
+
+.infos-comment a:hover {
+    text-decoration: underline;
+}
+
+span.alert-comment {
+    margin-left: .6rem;
+}
+
+span.date-comment {
+    margin-left: .6rem;
+}
+
+span.rep-comment {
+    margin-left: .6rem;
+}
+
+.commentaire p {
+    margin-bottom: 0;
+}
+
+.infos-comment {
+    margin-left: 1rem;
+    font-size: 0.9em;
+}
+
+.comment > div:last-child {
+    margin-bottom: 1.2rem;
+    margin-left: 1rem;
+}
+
+.bloc-comments > div {
+    border-top: 1px solid #f1f1f1;
+    padding-top: 3rem;
+}
+
+.comment.sous-comment {
+    padding-left: 3rem;
+    position: relative;
+}
+
+.comment.sous-comment:before {
+    content: "";
+    position: absolute;
+    top: -2rem;
+    left: 27px;
+    height: 110%;
+    background: #f5f5f5;
+    width: 1px;
+}
+
+.container-comments textarea {
+    overflow: auto;
+    resize: vertical;
+    width: auto;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    padding: 10px 16px 14px 17px;
+    resize: none;
+}
+
+.container-comments textarea:focus {
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    outline: none;
+}
+
+.container-comments form {
+    margin-left: 5rem;
+}
+
+input#send-comment {
+    background-color: #f5bb00;
+    border: none;
+    color: white;
+    padding: 0 20px;
+    line-height: 28px;
+    height: 28px;
+}
+
+form > p:first-child {
+    margin-bottom: 5px;
+}
 
 
 @media only screen and (max-width: 1200px) {

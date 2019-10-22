@@ -10,7 +10,9 @@ ob_start();
         <div class="chapter">
             <div class="thumbnail"></div>
                 <div>
-                    <h4> <?= htmlspecialchars($recentStoriesData['titre']); ?> </h4>
+                    <h4> <a href="index.php?action=histoire&amp;chapitre=<?= $recentStoriesData['id']; ?>">
+                    <?= htmlspecialchars($recentStoriesData['titre']); ?></a>
+                    </h4>
                 </div>
         </div>
     <?php

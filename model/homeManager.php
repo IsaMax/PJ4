@@ -14,7 +14,7 @@ class homeManager extends Manager {
     public function getStories() {
 
         $data = $this->dbConnect();
-        $gs = $data->query('SELECT , DATE_FORMAT(date_billet, "%d,%m,%Y") AS publi_billet FROM billets');
+        $gs = $data->query('SELECT * , DATE_FORMAT(date_billet, "%d,%m,%Y") AS publi_billet FROM billets');
         return $gs;
     }
 
@@ -26,9 +26,9 @@ class homeManager extends Manager {
     }
 
     public function lastComments() {
-        
+
         $data = $this->dbConnect();
-        $lc = $data->query('SELECT pseudo, commentaire FROM commentaires ORDER BY id DESC LIMIT 0, 6');
+        $lc = $data->query('SELECT id, pseudo, commentaire FROM commentaires ORDER BY id DESC LIMIT 0, 6');
         return $lc;
     }
 
