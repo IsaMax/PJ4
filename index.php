@@ -17,16 +17,32 @@ try {
             case 'histoire':
 
                 if(isset($_GET['chapitre'])) {
-                    $idChapter = (int) $_GET['chapitre'];
-                    if($idChapter > 0) {                 // ici répérer le nbr d'article pour réguler $chapitre
+                    $_GET['chapitre'] = (int) $_GET['chapitre'];
+
+                    if($_GET['chapitre'] > 0) {                 // ici répérer le nbr d'article pour réguler $chapitre
                         require 'controller/chapterController.php';
                         $story = new chapterController();
-                        $story->getChapter($idChapter);
-                        $story->getChapterComments($idChapter);
+                        $story->getChapter();
+                        $story->getChapterComments();
+
+                        if(isset($_GET['postComment'])) {
+                            $story->addComment();
+                        }
+                        
+                        if(isset($_GET['alert'])) {
+                            $_GET['alert'] = (int) $_GET['alert'];
+
+                            if($_GET['alert'] > 0) {
+                                $story->alertComment();
+                            }   
+                        }
+                    }
+                    else {
+                        throw new Exception('Cette page ne correspond à aucun chapitre');
                     }
                 }
                 else {
-                    trow new Exception('Aucun article ne correspond à votre requête');
+                    header('Location: index.php?action=histoire&amp;chapitre=1');
                 }
             break;  
             case 'biographie':
@@ -50,3 +66,6 @@ catch(Exception $erreur) {
 
     die('erreur : '.$erreur->getMessage());
 }
+
+
+// RAJOUTER HTMLSPECIALCHAR

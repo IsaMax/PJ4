@@ -470,6 +470,11 @@ input#send-comment {
     height: 28px;
 }
 
+.alert {
+    color: red;
+    font-weight: bold;
+}
+
 form > p:first-child {
     margin-bottom: 5px;
 }

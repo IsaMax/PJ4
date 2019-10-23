@@ -29,7 +29,7 @@ ob_start();
     ?>
 </div>
 <?php
-$content = ob_get_clean();
+$firstContentLeft = ob_get_clean();
 
 require 'view/template.php';
 ?>

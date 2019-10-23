@@ -24,6 +24,6 @@ ob_start();
     ?>
 </div>
 <?php 
-$placeLastComments = ob_get_clean();
+$secondContentRight = ob_get_clean();
 require 'view/template.php';
 ?>

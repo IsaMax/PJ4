@@ -35,7 +35,9 @@ while($storyData = $stories->fetch() AND $commentsData = $nbrComments->fetch()) 
     </div>
 
 <?php
-}
-$placeStories = ob_get_clean();
+} ?>
+</div>
+<?php
+$firstContentLeft = ob_get_clean();
 require 'view/template.php';
 ?>

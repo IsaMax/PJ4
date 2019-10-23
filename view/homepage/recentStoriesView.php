@@ -20,6 +20,6 @@ ob_start();
     ?>
 </div>
 <?php
-$placeRecentStories = ob_get_clean();
+$firstContentRight = ob_get_clean();
 require 'homepage/template.php';
 ?>

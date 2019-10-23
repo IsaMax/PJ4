@@ -26,17 +26,38 @@
                 <div class="row">
                     <div class="col-md-8">
                         
-                            <?= $placeStories; ?>
-         
+                        <?php 
+                            if(isset($firstContentLeft) {
+                                echo $firstContentLeft;
+                            }
+
+                            if(isset($arrowesPart)) {
+                                echo $arrowesPart;
+                            }
+
+                            if(isset($secondContentLeft)) {
+                                echo $secondContentLeft;
+                            }
+                            else {
+                                echo 'aucun commentaire';
+                            }
+                        ?>
+        
                     </div>
 
                     <!--  PARTIE DROITE -->
                     <div class="col-md-4">
                         <div class="bloc-items-right">
 
-                            <?= $placeRecentStories; ?>
+                            <?php 
+                                if(isset($firstContentRight) {
+                                    echo $firstContentRight;
+                                }
 
-                            <?= $placeLastComments; ?>
+                                if(isset($secondContentRight)) {
+                                    echo $secondContentRight;
+                                }  
+                            ?>
 
                         </div>
                     </div>
