@@ -27,7 +27,7 @@
                     <div class="col-md-8">
                         
                         <?php 
-                            if(isset($firstContentLeft) {
+                            if(isset($firstContentLeft)) {
                                 echo $firstContentLeft;
                             }
 
@@ -39,7 +39,8 @@
                                 echo $secondContentLeft;
                             }
                             else {
-                                echo 'aucun commentaire';
+                                if($_GET['action'] =='chapitre')
+                                     echo 'aucun commentaire';
                             }
                         ?>
         
@@ -50,7 +51,7 @@
                         <div class="bloc-items-right">
 
                             <?php 
-                                if(isset($firstContentRight) {
+                                if(isset($firstContentRight)) {
                                     echo $firstContentRight;
                                 }
 
@@ -67,7 +68,7 @@
     </main>
 
     <footer>
-        <?php require 'view/footerView.php'; ?>
+        <?php require 'view/footer/footerView.php'; ?>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

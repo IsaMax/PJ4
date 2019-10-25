@@ -13,19 +13,22 @@ try {
                 require 'controller/homeController.php';
                 $homepage = new homeController();
                 $homepage->getAllStories();
+                $homepage->getRecentStories();
+                $homepage->getRecentComments();
             break;
-            case 'histoire':
 
+            case 'histoire':
                 if(isset($_GET['chapitre'])) {
                     $_GET['chapitre'] = (int) $_GET['chapitre'];
 
-                    if($_GET['chapitre'] > 0) {                 // ici répérer le nbr d'article pour réguler $chapitre
+                    if($_GET['chapitre'] > 0) {         // ici répérer le nbr d'article pour réguler $chapitre
                         require 'controller/chapterController.php';
                         $story = new chapterController();
                         $story->getChapter();
                         $story->getChapterComments();
+                        $story->getNextStories();
 
-                        if(isset($_GET['postComment'])) {
+                        if(isset($_POST['commentaire'])) {
                             $story->addComment();
                         }
                         
@@ -45,11 +48,13 @@ try {
                     header('Location: index.php?action=histoire&amp;chapitre=1');
                 }
             break;  
+
             case 'biographie':
                 require 'controller/biographyController.php';
                 $bio = new biographyController();
-                $bio-> ;
+                //$bio-> ;
             break;
+
             case 'contact':
                 require 'controller/contactController.php';
                 $contact = new contactController();
@@ -60,6 +65,9 @@ try {
             // on redirige sur la page d'accueil ou une page 404 ?
             break;
         }
+    }
+    else {
+        header('Location: index.php?action=accueil');
     }
 }
 catch(Exception $erreur) {

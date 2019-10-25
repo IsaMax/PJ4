@@ -1,17 +1,17 @@
 <nav class="nav">
     <ul>
-        <li class="logo"> <a href="">Forteroche</a></li>
+        <li class="logo"> <a href="index.php">Forteroche</a></li>
         <li>
-            <a href="#">Accueil</a>
+            <a href="index.php">Accueil</a>
         </li>
         <li>
-            <a href="#">L'histoire</a>
+            <a href="index.php.action=chapitre">L'histoire</a>
         </li>
         <li>
-            <a href="#">Biographie</a>
+            <a href="index.php?action=biographie">Biographie</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="index.php.action=contact">Contact</a>
         </li>
     </ul>
 </nav>

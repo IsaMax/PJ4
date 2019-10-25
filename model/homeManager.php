@@ -5,12 +5,6 @@ require_once 'model/Manager.php';
 
 class homeManager extends Manager {
 
-   /*  public function countStories() {
-
-        $data = $this->dbConnect();
-        $nbrStories = $data->query('')
-    } */
-
     public function getStories() {
 
         $data = $this->dbConnect();

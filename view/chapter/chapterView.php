@@ -5,9 +5,9 @@
     </div>
 
     <div class="article">
-        <h1><?= $chapterData['titre']; ?></h1>
+        <h1><?= htmlspecialchars($chapterData['titre']); ?></h1>
         <div class="content-body">
-            <?= $chapterData['contenu']; ?>
+            <?= htmlspecialchars($chapterData['contenu']); ?>
             <hr>
             <div class="bloc-arrow">
                 <div class="row">
@@ -21,7 +21,7 @@
                             <div class="arrow-left" title="chapitre précédent">
                             <i>&#60;</i>
                             <p class="title-previous"><a href="index.php?action=histoire&amp;chapitre=<?= $chapterPreviousTitle['id']?>">
-                            <?= $chapterPreviousTitle['titre']; ?>
+                            <?= htmlspecialchars($chapterPreviousTitle['titre']); ?>
                             </a></p>
                             <p class="legend">previous post</p>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="arrow-right" title="chapitre suivant">
                                 <i>&#62;</i>
                             <p class="title-next"><a href="index.php?action=histoire&amp;chapitre=<?= $chapterNextTitle['id']?>">
-                            <?= $chapterNextTitle['title']; ?></a></p>
+                            <?= htmlspecialchars($chapterNextTitle['title']); ?></a></p>
                             <p class="legend">next post</p>
                         </div>
                        <?php  } ?>

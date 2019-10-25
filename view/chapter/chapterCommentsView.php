@@ -24,14 +24,14 @@
                 </div>
                 <div>
                     <div class="commentaire">
-                        <span class="comment-name"><?= $chapterComments['pseudo']; ?></span>
+                        <span class="comment-name"><?= htmlspecialchars($chapterComments['pseudo']); ?></span>
                         <p class="commennt-body">
-                            <?= $chapterComments['commentaire']; ?>
+                            <?= htmlspecialchars($chapterComments['commentaire']); ?>
                         </p>
                     </div>
                     <div class="infos-comment">
                         <span class="rep-comment"><a href="">répondre</a></span>
-                        <span class="alert-comment"><a href="index.php?action=histoire&amp;chapitre=<?= $chapterComments['id_billet']; ?>&amp;alert=<?= $chapterComments['id']; ?>">signaler</a></span>
+                        <span class="alert-comment"><a href="index.php?action=histoire&amp;chapitre=<?= htmlspecialchars($chapterComments['id_billet']); ?>&amp;alert=<?= $chapterComments['id']; ?>">signaler</a></span>
                         <span class="date-comment"><a href=""><?= $chapterComments['date_com']; ?></a></span>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
         <div>
             <div class="avatar avatar-now"></div>
         </div>
-        <form action="index.php?action=histoire&amp;chapitre=<?= $_GET['chapitre']; ?>&amp;postComment" method="POST">
+        <form action="index.php?action=histoire&amp;chapitre=<?= $_GET['chapitre']; ?>" method="POST">
             <p><textarea placeholder="
             <?php if($textareaVide) {
                 echo 'Attention votre message est vide';

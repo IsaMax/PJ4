@@ -14,7 +14,7 @@ while($storyData = $stories->fetch() AND $commentsData = $nbrComments->fetch()) 
         </div>
         <div class="bloc-text">
             <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
-            <h3 class="bloc-title"> <?= htmlspecialchars($storyData['titre']); ?> </h3>
+            <h2 class="bloc-title"> <?= htmlspecialchars($storyData['titre']); ?> </h2>
             <div class="bloc-infos">
                 <div class="author-part">
                     <i class="fa fa-user"></i>
@@ -29,7 +29,7 @@ while($storyData = $stories->fetch() AND $commentsData = $nbrComments->fetch()) 
                     <span>27</span>
                 </div>
             </div>
-            <p class="bloc-teaser"> <?= htmlspecialchars($storyData['contenu']); ?> </p>
+            <p class="bloc-teaser"> <?= substr(htmlspecialchars($storyData['contenu']), 0, 100) . "..."; ?> </p>
             <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
         </div>
     </div>
@@ -39,5 +39,6 @@ while($storyData = $stories->fetch() AND $commentsData = $nbrComments->fetch()) 
 </div>
 <?php
 $firstContentLeft = ob_get_clean();
+
 require 'view/template.php';
 ?>

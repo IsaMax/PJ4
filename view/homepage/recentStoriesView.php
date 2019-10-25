@@ -21,5 +21,5 @@ ob_start();
 </div>
 <?php
 $firstContentRight = ob_get_clean();
-require 'homepage/template.php';
+require 'view/template.php';
 ?>

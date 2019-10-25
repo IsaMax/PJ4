@@ -86,7 +86,7 @@ li.logo a {
 }
 
 .bloc-img > div:first-child {
-	width: 230px;
+	width: 100%;
 	height: 210px;;
 	background-image: url('../images/paque.jpg');
 	background-size: cover;
@@ -108,7 +108,7 @@ p.book-name {
 }
 
 
-h3.bloc-title {font-family: 'Roboto Condensed', serif;color: #50514f;font-size: 1.5em;}
+h2.bloc-title {font-family: 'Roboto Condensed', serif;color: #50514f;font-size: 1.5em; text-transform: uppercase;}
 
 .bloc-infos {
     width: 100%;
@@ -184,10 +184,10 @@ p.bloc-button a:hover:before {
 	background-size: cover;
 }
 
-.chapter h4 {
+.chapter h4 a {
 	color: #777;
     font-family: 'Patrick Hand', serif;
-    font-size: 1.1em;
+    font-size: 1em;
     vertical-align: middle;
     font-weight: bold;
     padding-top: 14px;

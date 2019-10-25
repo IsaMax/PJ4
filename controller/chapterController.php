@@ -24,7 +24,7 @@ class chapterController {
 
     public function addComment() {
 
-        if(isset($_POST['commentaire'])) {
+        if(!empty($_POST['commentaire'])) {
             $this->$chapter->addComment(); // Attention le manager attends aussi le pseudo
         }
         else {
@@ -35,6 +35,11 @@ class chapterController {
 
     public function alertComment() {
         $this->$chapter->alertComment();
+    }
+
+    public function getNextStories() {
+       $nextStories = $this->$chapter->getNextStories();
+       require 'view/chapter/nextChaptersView.php';
     }
 
 

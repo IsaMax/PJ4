@@ -42,11 +42,11 @@ class storyManager extends Manager {
 
     public function addComment() {
 
-        $swc = $this->$data->prepare('INSERT INTO commentaires(id_billet, pseudo, commentaire)
-                                     VALUES(:id_billet, :pseudo, :commentaire)');
+        $swc = $this->$data->prepare('INSERT INTO commentaires(id_billet, /*pseudo,*/ commentaire, signalement)
+                                     VALUES(:id_billet, /*:pseudo,*/ :commentaire, 0)');
         $swc->execute(array(
             ':id_billet' => $_GET['chapitre'],
-            ':pseudo' => $_POST['pseudo'], // voir pour le récupérer directement lors de l'authentification
+            /*':pseudo' => $_POST['pseudo'], */// voir pour le récupérer directement lors de l'authentification
             ':commentaire' => $_POST['commentaire'],
         ));
     }
@@ -55,5 +55,12 @@ class storyManager extends Manager {
 
         $alert = $this->$data->prepare('INSERT INTO commentaires(signalement) VALUES(1) WHERE id = ?');
         $alert->execute(array($_GET['alert']));
+    }
+
+    public function getNextStories() {
+
+        $nst = $this->$data->prepare('SELECT id, title FROM billet WHERE id > ? LIMIT 0, 5');
+        $nst->execute(array($_GET['chapitre']));
+        return $nst;
     }
 }

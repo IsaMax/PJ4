@@ -1,34 +1,22 @@
+<?php ob_start(); ?>
 <div class="book-full">
+<h3>L'Histoire</h3>
+<?php while($next = $nextStories->fetch()) { ?>
 
-    <h3>L'Histoire</h3>
-        <div class="chapter">
-            <div class="thumbnail"></div>
-                <div>
-                    <h4>Princesse des neiges</h4>
-                </div>
+    <div class="chapter">
+        <div class="thumbnail"></div>
+            <div>
+                <h4><?= $next['titre'];?></h4>
+            </div>
         </div>
 
-        <div class="chapter">
-            <div class="thumbnail"></div>
-                <div>
-                    <h4>Princesse des neiges</h4>
-                </div>
-        </div>
-
-        <div class="chapter">
-            <div class="thumbnail"></div>
-                <div>
-                    <h4>Princesse des neiges</h4>
-                </div>
-        </div>
-
-        <div class="chapter">
-            <div class="thumbnail"></div>
-                <div>
-                    <h4>Princesse des neiges</h4>
-                </div>
-        </div>
-        
     </div>
 
+    <?php
+}?>
+    
 </div>
+<?php
+$firstContentRight = ob_get_clean();
+require 'view/template.php';
+ ?>
