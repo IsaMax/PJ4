@@ -22,7 +22,7 @@ class homeManager extends Manager {
     public function lastComments() {
 
         $data = $this->dbConnect();
-        $lc = $data->query('SELECT id, pseudo, commentaire FROM commentaires ORDER BY id DESC LIMIT 0, 6');
+        $lc = $data->query('SELECT id, id_billet, pseudo, commentaire FROM commentaires ORDER BY id DESC LIMIT 0, 6');
         return $lc;
     }
 

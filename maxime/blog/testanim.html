@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=*, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="public/css/pj4.css">
+<style>
+
+    * { box-sizing: border-box; }
+    body { overflow-x:hidden; margin: 0;}
+
+    .container { width: 100vw; position: relative; }
+
+    .bloc-photos {
+        display: flex;
+        flex-wrap: nowrap;
+        height: 600px;
+        transform: translateX(0);
+        transition: transform 1s cubic-bezier(.01,-0.03,.29,1);
+    }
+
+    .bloc-photos > div { min-width: 100vw; }
+
+    .bloc-visible {
+        min-width: 100vw;
+        display: flex;
+        flex-wrap: nowrap;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-bottom: 8px #f5bb00 solid; 
+    }
+
+    .bloc-photos .photo1 { background: yellow; }
+    .bloc-photos .photo2 { background: violet; }
+    .bloc-photos .photo3 { background: green; }
+    .bloc-photos .photo4 { background: blue; }
+
+    .bloc-visible [class^='bloc-sombre'] {
+        position: relative;
+        width: 25%;
+        overflow: hidden;
+        background-color: rgba(0,0,0,0.2);
+        height: 600px;
+        border-left: 1px solid #FFF;
+    }
+
+    .bloc-visible .bloc-text {
+        width: 95%;
+        height: 34%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 35%);
+        background: rgba(0,0,0,.4);
+        text-align: center;
+        padding: 10px 0;
+        margin-left: 0;
+        transition: transform .2s linear;
+        cursor: pointer;
+    }
+
+    .bloc-visible .bloc-text a { text-decoration: none;}
+    .bloc-visible .bloc-text h2 { margin-top: 7px; margin-bottom: 7px; color: #cecece; }
+    .bloc-visible .bloc-text .book-name { color: #cecece; }
+    .bloc-visible .bloc-text .date { margin-top: 14px;  color: #cecece; }
+    .bloc-visible .bloc-text .bloc-button {  margin-top: 2.5em; }
+
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text {
+
+        transform: translate(-50%, 0);
+    }
+
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text .book-name { color: #f5bb00;}
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text h2 { color: white; margin-top: 7px; margin-bottom: 7px; }
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text .date { color: #cecece; }
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text .date { margin-top: 14px; }
+    .bloc-visible [class^="bloc-sombre"]:hover .bloc-text .bloc-button {  margin-top: 2.5em; }
+
+    .bloc-visible .bloc-text a:hover { text-decoration: underline; text-decoration-color: white;}
+
+</style>
+
+<body>
+    
+    <div class="container">
+
+        <div class="bloc-photos">
+
+            <div class="photo1"></div>
+            <div class="photo2"></div>
+            <div class="photo3"></div>
+            <div class="photo4"></div>
+
+        </div>
+        
+        <div class="bloc-visible">
+
+            <div class="bloc-sombre-1">
+                <div class="bloc-text">
+                    <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
+                    <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
+                   
+                    <p class="date">10 avr 2012</p>
+                        
+                    <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
+                </div>
+                   
+               
+            </div>
+
+            <div class="bloc-sombre-2">
+                <div class="bloc-text">
+                    <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
+                    <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
+                    
+                    <p class="date">10 avr 2012</p>
+                        
+                    <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
+                </div>
+            </div>
+
+            <div class="bloc-sombre-3">
+                <div class="bloc-text">
+                    <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
+                    <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
+                    
+                    <p class="date">10 avr 2012</p>
+                        
+                    <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
+                </div>
+            </div>
+
+            <div class="bloc-sombre-4">
+                <div class="bloc-text">
+                    <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
+                    <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
+                    
+                    <p class="date">10 avr 2012</p>
+                        
+                    <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        let tabPhotos = $('.bloc-photos > div');
+
+        for(let i = 1 ; i <= tabPhotos.length ; i++) {
+
+            $('.bloc-visible .bloc-sombre-'+i).hover(function() {
+            $('.bloc-photos').css({'transform':'translateX('+(-100*(i-1))+'vw)'});    
+            
+        });
+        }
+        
+    </script>
+</body>
+</html>
