@@ -1,0 +1,175 @@
+@media all and (max-width: 1200px) {
+
+    .bloc-visible [class^='bloc-sombre'] { width: 33.3333%; }
+    .bloc-sombre-4 { display: none; }
+
+}
+
+@media all and (max-width: 992px) {
+
+    .comments-part-right {
+        margin-top: 3rem;
+        box-shadow: 0px 0px 17px 3px rgb(220, 211, 211);
+    }
+
+    .bloc-items-right {
+        margin-top:1rem;
+    }
+
+    .book-full { box-shadow: 0px 0px 17px 3px rgb(220, 211, 211); }
+    .bloc-text {  padding-right: 1rem; }
+}
+
+@media all and (max-width: 900px) {
+
+    .bloc-photos > div, .bloc-visible [class^='bloc-sombre'] { height: 500px; }
+    .bloc-visible .bloc-text { height: 40%; }
+
+}
+
+@media all and (max-width: 800px) {
+
+    .bloc-visible [class^='bloc-sombre'] { width: 50%; }
+    .bloc-sombre-3 { display: none; }
+    .bloc-photos > div, .bloc-visible [class^='bloc-sombre'] { height: 400px; }
+    .bloc-visible .bloc-text { height: 50%; }
+}
+
+@media all and (max-width: 730px) {
+
+    .nav { font-size: .8em; }
+
+    .bloc-infos { display: none; }
+    .post-item .bloc-img { width: 44%; }
+    section { padding: 0; }
+}
+
+@media all and (max-width: 600px) {
+
+    .bloc-visible [class^='bloc-sombre'] { width: 100%; }
+    .bloc-sombre-2 { display: none; }
+    .bloc-photos > div, .bloc-visible [class^='bloc-sombre'] {  height: 285px; }
+
+    .bloc-visible .bloc-text {
+        width: 56%;
+        height: 68%;
+    }
+
+    nav ul {
+        transform: scaleY(0);
+        position: absolute;
+        top: 100%;
+        z-index: 555;
+        background: #FFF;
+        transform-origin: 50% 0;
+        height: 290px;
+        width: 100%;
+        flex-direction: column;
+        transition: transform .3s;
+        font-size: 1.2em;
+    }
+
+    nav a {
+        display: block;
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .btn_menu .hamburger-menu {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #f5bb00;
+        position:relative;
+    }
+
+    span.hamburger-menu:before {
+        content: "";
+        width: 100%;
+        height: 3px;
+        background: #f5bb00;
+        position: absolute;
+        transform: translateY(8px);
+        transition: all .5s;
+    }
+
+    span.hamburger-menu:after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        background: #f5bb00;
+        position: absolute;
+        transform: translateY(-8px);
+        transition: all .5s;
+    }
+
+    .btn_menu.visible .hamburger-menu {background: transparent;}
+
+    .btn_menu.visible .hamburger-menu:before {
+        transform: rotate(-45deg);
+    }
+
+    .btn_menu.visible .hamburger-menu:after {
+        transform: rotate(45deg);
+    }
+
+    .btn_menu.visible ~ ul {
+        box-shadow: 0px 0px 17px 3px rgb(220, 211, 211);
+        transform: scaleY(1);
+    }
+
+    nav ul a { position:initial;}
+    nav ul { flex-direction:column; justify-content: space-around;}
+    header ul > li { line-height:0;}
+
+    span.date-comment { display: none; }
+
+    .bloc-comments { padding-right: 5rem;  }
+}
+
+@media all and (max-width: 550px) {
+
+    .post-item {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 5px;
+    }
+
+    .post-item .bloc-img {
+        overflow: hidden;
+        width: 71%;
+        height: 255px;
+    }
+    .bloc-visible .bloc-text { height: 55%; }
+    .bloc-sombre-1 .date { display:none; }
+
+    .bloc-items-left .post-item .bloc-text {
+        width: 70%;
+        margin-top: 2rem;
+    }
+
+    .bloc-items-left {
+        padding: 0 0;
+        margin-top: 2rem;
+    }
+}
+
+@media all and (max-width: 485px) {
+
+    .bloc-comments { padding-right: 1rem; }
+    .avatar {
+        width: 50px;
+        height: 50px;
+    }
+
+    .container-comments textarea {
+        width: 100%;
+    }
+}
+
+@media all and (max-width: 400px) {
+    p.book-name { display:none;}
+}
+

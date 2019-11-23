@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="public/css/pj4.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
 </head>
 <body>
 
@@ -30,7 +31,7 @@
         <section>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-lg-8">
                         
                         <?php 
                             if(isset($firstContentLeft)) {
@@ -53,7 +54,7 @@
                     </div>
 
                     <!--  PARTIE DROITE -->
-                    <div class="col-md-4">
+                    <div class="col-lg-4">
                         <div class="bloc-items-right">
 
                             <?php 

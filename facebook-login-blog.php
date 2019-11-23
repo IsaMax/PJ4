@@ -18,14 +18,17 @@ else if(isset($_GET['code']))
     if(isset($_SESSION['access_token']))
     {
         $access_token = $_SESSION['access_token'];
+
     }
     else
     {
+       
         $access_token = $facebook_helper->getAccessToken();
 
         $_SESSION['access_token'] = $access_token;
 
         $facebook->setDefaultAccessToken($_SESSION['access_token']);
+
     }
 
     $_SESSION['user_id'] = '';
@@ -49,16 +52,19 @@ else if(isset($_GET['code']))
 
         setcookie('user_name', $_SESSION['user_name'], time()+365*24*3600, null, null, false, true );
     }
-
-  
 }
 else
 {
     $facebook_login_url = $facebook_helper->getLoginUrl('https://maxime.agences.tw/blog/');
-    
-    // Render Facebook login button
-    $facebook_login_url = '<div align="center"><a href="'.$facebook_login_url.'"><img src="public/images/log-fb.png" width="300" height="auto" /></a></div>';
+
+    // Render Facebook falogin button
+    //$facebook_login_url = '<div align="center"><a href="'.$facebook_login_url.'"><img src="public/images/log-fb.png" width="300" height="auto" /></a></div>';
+
+    $facebook_login_btn = '<a class="btn-connexion-fb" href="'.$facebook_login_url.'"><i class="fa fa-facebook-official"></i><span>Connectez-vous pour commenter !</span></a>';
+
+
 }
+
 
 /* if(isset($facebook_login_url))
 {

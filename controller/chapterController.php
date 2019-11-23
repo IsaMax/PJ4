@@ -19,8 +19,6 @@ class chapterController {
         // Affiche les commentaires
         $chapterCommentsData = $chapter->getComments();
         $nbrComments = $chapter->countComments();
-    
-
 
         // Ajoute le commentaire 
         if(isset($_POST['commentaire'])) {

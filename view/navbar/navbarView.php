@@ -1,4 +1,7 @@
 <nav class="nav">
+
+    <a class="btn_menu" href="#"><span class="hamburger-menu"></span></a>
+
     <ul>
         <li class="logo"> <a href="index.php">Forteroche</a></li>
         <li>

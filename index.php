@@ -3,14 +3,20 @@
 // Commentaire qui se poste plusieurs fois avec le rechargement de la page
 // on attrape ici toutes les erreurs qui se présenteront dans le code (faire page spéciale)
 
-
-//index.php
-
-
+include 'facebook-login-blog.php';
     
 try {
+
+    if(isset($_COOKIE['chapitre'])) {
+
+        $desTemp = $_COOKIE["chapitre"];
+        setcookie('chapitre');
+        unset($_COOKIE['chapitre']);
+
+       header('Location: index.php?action=histoire&chapitre='.$desTemp);
+    }
     
-    if(isset($_GET['action'])) {    
+    else if(isset($_GET['action'])) {
         
         switch($_GET['action']) {
 
@@ -66,6 +72,3 @@ catch(Exception $erreur) {
 
     die('erreur : '.$erreur->getMessage());
 }
-
-
-// RAJOUTER HTMLSPECIALCHAR

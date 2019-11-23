@@ -1,0 +1,310 @@
+
+body {
+    margin:0;
+}
+
+@font-face {
+    font-family: 'DS-DIGIB';
+    src: url('../fonts/DS-DIGIB.TTF') format('truetype');
+}
+
+input:focus {
+    outline: none;
+}
+
+nav.nav-horizontale > div:first-child {width: 15%;background: #f5bb00;height: 75px;min-width: 200px;}
+
+* {
+    box-sizing: border-box;
+}
+
+nav.nav-horizontale > div:last-child {
+    width: 85%;
+    background: #33414e;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+nav.nav-horizontale > div:last-child a {
+    align-self: center;
+    font-size: 2em;
+    color: #f5bb00;
+}
+
+.auteur {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #FFF;
+}
+
+.bloc-auteur img {
+    width: 125px;
+    height: 125px;
+    transform: rotateY(0);
+    border-radius: 50%;
+    border: 3px solid #f5bb00;
+    transition: transform 10s linear;
+}
+
+.bloc-auteur img:hover {
+    transform: rotateY(15turn);
+}
+
+.bloc-auteur p {
+    color: #f5bb00;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+nav.nav-horizontale {
+    display: flex;
+}
+
+section.bloc-global .aside-verticale {
+    width: 15%;
+    background:#33414e;
+    height: 100vh;
+}
+
+.heure, .minute, .seconde {
+    font-family: 'DS-DIGIB', sans-serif;
+}
+
+section.bloc-global {
+    display: flex;
+}
+
+nav.nav-verticale ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+nav.nav-verticale ul li a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+nav.nav-verticale ul li {
+    height: 75px;
+    line-height: 75px;
+    text-align: center;
+    background: #33414e;
+    /* color: white; */
+    border-bottom: 1px solid #8080807a;
+    position: relative;
+}
+
+.bloc-total.infos-temps {
+    justify-content: center;
+    align-items: center;
+}
+
+.bloc-total.infos-temps {
+    justify-content: center;
+}
+
+.bloc-total.infos-temps .horloge {
+    font-size: 2.5em;
+    position: relative;
+}
+
+.horloge > span:not(:last-child):after {
+    content: ":";
+    margin-left: 0.5rem;
+}
+
+nav.nav-verticale a {
+    font-size: 1.1em;
+}
+
+nav.nav-verticale .fa {
+    margin-right: 2rem;
+    font-size: 1.5em;
+}
+
+nav.nav-verticale ul li a:after {content: "";position: absolute;top: 0;bottom: 0;left: 0;right: 0;cursor: pointer;}
+
+nav.nav-verticale ul li:hover {
+    background: #394d5f;
+}
+
+.bloc-auteur {
+    background: #2d3945;
+    height: 215px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-bloc-infos {
+    display: flex;
+}
+
+section.bloc-central {
+    width: 85%;
+    background: #f0f0f0;
+    padding: 2rem;
+}
+
+.bloc-total {
+    position: relative;
+    display: flex;
+    width: 25%;
+    margin: 0 1rem;
+    height: 125px;
+    padding: .5rem;
+    background: #f7f7f7;
+    border-radius: 5px;
+    box-shadow: 0px 0px 17px 3px rgb(220, 211, 211);
+    transition: background-color .2s, color .3s;
+}
+
+.options-chapitre {
+    transform: translateY(-150%);
+    position: absolute;
+    background: #33414e;
+    padding: 1rem;
+    right: 1%;
+    z-index: 100;
+    border-radius: 10px;
+    top: 1%;
+    transition: transform .2s;
+}
+
+.bloc-chapitre:hover .options-chapitre {
+   transform: translateY(0);
+}
+
+.options-chapitre > span:first-child a {
+    color: #FFF;
+    text-decoration: none;
+    margin-right: 1.5rem;
+}
+
+.options-chapitre > span:last-child a {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.options-chapitre a:hover {
+    text-decoration: underline !important;
+}
+
+.options-chapitre i {
+    margin-right: .2rem;
+}
+
+.bloc-total a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.bloc-total:hover {
+    background-color: #2d39457a;
+    color:#FFF;
+}
+
+.bloc-total:hover aside i {
+    color:#FFF;
+}
+
+.bloc-total aside {
+    height: 100%;
+    width: 33% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #00000030;
+}
+
+.bloc-total div {
+    width: 66%;
+    text-align: center;
+    align-self: center;
+}
+
+p.texte-gros {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+
+p.texte-petit {
+
+    margin-bottom: 0;
+    margin-top: 0;
+    
+}
+
+.bloc-total i.fa {
+    font-size: 4em;
+    color: #2d39457a;
+}
+
+.bloc-chapitre {
+    width: 23%;
+    height: 100%;
+    background: #FFF;
+    margin: .9rem;
+    position: relative;
+    min-width: 320px;
+    transform: scale(1);
+    box-shadow: 0px 0px 17px 3px rgb(220, 211, 211);
+    transition: transform .2s, box-shadow .3s;
+    overflow: hidden;
+}
+
+.bloc-chapitre:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 17px 3px rgb(175, 167, 167);
+}
+
+.informations-chapitre a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.container-bloc-articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.illustration-chapitre {
+    width: 100%;
+    padding: 1rem;
+    height: 250px;
+    background-image: url(https://phototrend.fr/wp-content/uploads/2015/03/AnneJutras_PhotoTrend_0_photo-intro-759x500.jpg);
+    background-size: 100% 100%;
+    transition: background-size 2s .1s;
+}
+
+.bloc-chapitre:hover .illustration-chapitre {
+    background-size: 120% 120%;
+}
+
+.informations-chapitre {
+    text-align: center;
+}
+
+h4.titre-chapitre {
+    font-size: 1.2em;
+    margin-bottom: 1rem;
+}

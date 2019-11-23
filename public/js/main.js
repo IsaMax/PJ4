@@ -11,8 +11,23 @@ $(function() {
 
         if(!$(e.target.closest('.comment')).next().hasClass('js_form')) {
 
-            
-            $(e.target).closest('.comment:not(.sous-comment)').next()
+            $.ajax({
+                url : $(this).attr('href'),
+                type : 'POST',
+                dataType : 'html',
+
+                success : function(code_html){
+                    $(e.target).closest('.comment:not(.sous-comment)').next()
+                        .append(code_html);
+                    console.log(code_html);
+                },
+
+                error : function(resultat){
+                    //console.log(resultat);
+                }
+            });
+
+           /* $(e.target).closest('.comment:not(.sous-comment)').next()
             .append(
             '<div class="js_form" style="3rem">'+
                 '<div>'+
@@ -22,12 +37,12 @@ $(function() {
                     '<p><textarea placeholder="Laissez un commentaire..." name="commentaire_rep"></textarea></p>'+
                 '<p><input type="submit" name="send-comment" id="send-answer" value="envoyer"></p>'+
                 '</form>'+
-            '</div>');
+            '</div>');*/
             }
     
     
             $("html, body").stop()
-                           .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);
+                .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);
         });
 
 
@@ -207,7 +222,31 @@ $(function() {
         });         
     });
 
+    $('.btn_menu').click(function(e) {
 
+        e.preventDefault();
+
+        if($(this).hasClass('visible'))
+            $(this).removeClass('visible');
+        else
+            $(this).addClass('visible');
+    });
+
+    console.log($('.btn_menu ~ ul'))
+
+
+    $('.btn-connexion-fb').click( function (e){
+
+        sessionStorage.goToBottom = 'ok';
+    })
+
+    if(sessionStorage.goToBottom === 'ok' ) {
+        $("html, body").stop()
+            .animate( { scrollTop: $('.bloc-comments').offset().top }, 500);
+
+        console.log(sessionStorage.goToBottom)
+        sessionStorage.goToBottom = '';
+    }
 });
 
 

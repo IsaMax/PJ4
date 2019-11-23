@@ -1,12 +1,19 @@
 <!-- ********** AFFICHE LE CHAPITRE REQUIS ********* -->
-<?php ob_start(); ?>
+
+<?php
+include 'facebook-login-blog.php';
+ob_start(); ?>
 <div class="bloc-items-left">
     <div class="image-head">
         <img src="./public/images/paque.jpg" alt=""> <!-- rajouter un lien pour metttre l'image d'accueil d'un billet -->
     </div>
 
     <div class="article">
-        <h1><?= htmlspecialchars($chapterData['titre']); ?></h1>
+        <h1><?php  echo htmlspecialchars($chapterData['titre']);
+                    if(isset($_SESSION['email']) AND isset($_SESSION['id'])) {
+                        echo '<a href="./admin/index.php?action=editer&chapitre='.$chapterData["id"].'" class="lien-editer-chapitre">(EDITER)</a>';
+                        echo '<a href="./admin/index.php?action=supprimer&chapitre='.$chapterData["id"].'" class="lien-editer-chapitre">(SUPPPRIMER)</a>';
+                    } ?></h1>
         <div class="content-body">
             <?= htmlspecialchars($chapterData['contenu']); 
 
@@ -106,30 +113,35 @@
                             throw new Exception('Le commentaire auquel vous souhaitez répondre n\'existe pas');
                         } ?>
 
-                        <a href="#" class="lien_repondre" data-chapitre = "<?= $para ?>" data-numComment = "<?= htmlspecialchars($chapterComments['id']); ?>">répondre</a>
+                        <a href="verifcofb.php?chapitre=<?=$_GET['chapitre'] ?>&id_parent=<?= $chapterComments['id'] ?>&|<?= $facebook_login_url ?>" class="lien_repondre" data-chapitre = "<?= $para ?>" data-numComment = "<?= htmlspecialchars($chapterComments['id']); ?>">répondre</a>
                         </span>
                         <?php
-                        if($chapterComments['pseudo'] == $_SESSION['user_name']) { ?>
+                        if(isset($_SESSION['user_name']) AND isset($_SESSION['user_image'])) {
+                            if ($chapterComments['pseudo'] == $_SESSION['user_name']) { ?>
 
-                            <!-- on fait un form qu'on affichera pas (pour transmettre les données) -->
-                            <form class="form-editer-commentaire" style="display:none;">
-                                <input name="chapitre" value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
-                                <input name="id_commentaire" value="<?= htmlspecialchars($chapterComments['id']); ?>">
-                                <input name="pseudo" value="<?= htmlspecialchars($chapterComments['pseudo']); ?>">
-                                <input name="edit_comment" value="true">
-                                <input name="comment_is_answer" value="false">
-                            </form>
+                                <!-- on fait un form qu'on affichera pas (pour transmettre les données) -->
+                                <form class="form-editer-commentaire" style="display:none;">
+                                    <input name="chapitre"
+                                           value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
+                                    <input name="id_commentaire"
+                                           value="<?= htmlspecialchars($chapterComments['id']); ?>">
+                                    <input name="pseudo" value="<?= htmlspecialchars($chapterComments['pseudo']); ?>">
+                                    <input name="edit_comment" value="true">
+                                    <input name="comment_is_answer" value="false">
+                                </form>
 
-                            <form class="form-supprimer-commentaire" style="display:none;">
-                                <input name="chapitre" value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
-                                <input name="pseudo" value="<?= htmlspecialchars($chapterComments['pseudo']); ?>">
-                                <input name="suppr_comment" value="true">
-                                <input name="comment_is_answer" value="false">
-                            </form>
+                                <form class="form-supprimer-commentaire" style="display:none;">
+                                    <input name="chapitre"
+                                           value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
+                                    <input name="pseudo" value="<?= htmlspecialchars($chapterComments['pseudo']); ?>">
+                                    <input name="suppr_comment" value="true">
+                                    <input name="comment_is_answer" value="false">
+                                </form>
 
-                            <span class="edit-comment"><a href="#">éditer</a></span>
-                            <span class="suppr-comment"><a href="#">supprimer</a></span>
-                        <?php }
+                                <span class="edit-comment"><a href="#">éditer</a></span>
+                                <span class="suppr-comment"><a href="#">supprimer</a></span>
+                            <?php }
+                        }
                         ?>
                         <span class="alert-comment"><a href="/blog/index.php?action=histoire&amp;chapitre=<?= htmlspecialchars($chapterComments['id_billet']); ?>&amp;alert=<?= $chapterComments['id']; ?>">signaler</a></span>
                         <span class="date-comment"><?= htmlspecialchars($chapterComments['date_com']); ?></span>
@@ -159,11 +171,13 @@
                                 <div class="infos-comment">
 
                                 <?php
-                                    if($elt['pseudo'] == $_SESSION['user_name']) { ?>
+                                if(isset($_SESSION['user_name']) AND isset($_SESSION['user_image'])) {
+                                    if ($elt['pseudo'] == $_SESSION['user_name']) { ?>
 
                                         <!-- on fait un form qu'on affichera pas (pour transmettre les données) -->
                                         <form class="form-editer-commentaire-reponse" style="display:none;">
-                                            <input name="chapitre" value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
+                                            <input name="chapitre"
+                                                   value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
                                             <input name="id_commentaire" value="<?= htmlspecialchars($elt['id']); ?>">
                                             <input name="pseudo" value="<?= htmlspecialchars($elt['pseudo']); ?>">
                                             <input name="edit_comment" value="true">
@@ -171,7 +185,8 @@
                                         </form>
 
                                         <form class="form-supprimer-commentaire-reponse" style="display:none;">
-                                            <input name="chapitre" value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
+                                            <input name="chapitre"
+                                                   value="<?= htmlspecialchars($chapterComments['id_billet']); ?>">
                                             <input name="pseudo" value="<?= htmlspecialchars($elt['pseudo']); ?>">
                                             <input name="suppr_comment" value="true">
                                             <input name="comment_is_answer" value="true">
@@ -180,6 +195,7 @@
                                         <span class="edit-comment-answer"><a href="#">éditer</a></span>
                                         <span class="suppr-comment-answer"><a href="#">supprimer</a></span>
                                     <?php }
+                                }
                                     ?>
                                         <span class="alert-comment">
                                             <a href="/blog/index.php?action=histoire&amp;chapitre=<?= htmlspecialchars($chapterComments['id_billet']); ?>&amp;alertAnswer=<?= $elt['id']; ?>">signaler</a>
@@ -192,11 +208,10 @@
             } echo '</div>';  
         }
     }$chapterCommentsData->closeCursor();
-        
 
         if(isset($facebook_login_url))
             {
-                echo $facebook_login_url;
+                echo $facebook_login_btn;
             }
             else
             { ?>
