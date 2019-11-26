@@ -8,9 +8,17 @@ class homeController {
 
         $hm = new homeManager();
 
-        $reqs = $hm->appelerChapitre();
+        // récupère les chapitres
+        $reqs = $hm->appelerChapitres();
 
-        require 'view/homepageView.php';
+        // récupère les signalements
+        $dsrep = $hm->rechercheSignalement();
+
+        // récupère les signalements
+        $rmrep = $hm->rechercheMessage();
+
+
+        require 'vue/homepageView.php';
     }
 
 }

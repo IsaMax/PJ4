@@ -14,9 +14,12 @@ $(function() {
         secondes.html(addSeconde(date.getUTCSeconds()));
 
         function addSeconde(elt) {
-            if(elt.length === 1) {
+
+            if(elt < 10) {
                 return '0'+elt;
             }
+            else
+                return elt;
         }
 
     }, 1000)

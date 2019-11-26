@@ -28,8 +28,9 @@
         <main>
             
             <?php
-
-            require 'gobalInformationsView.php';
+            if($_GET['action'] == 'accueil') {
+                require 'globalInformationsView.php';
+            }
 
             if(isset($content)) {
                 echo $content;

@@ -1,74 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Connexion </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="Demo Project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./public/css/admin.css">
+</head>
+<body class="body-connexion">
+
 <?php
-ob_start();
 
-    if($nbrEmail == NULL) {
+require 'navbarSecondaireView.php'; ?>
 
-        if(isset($mdpOk) AND isset($emailOk)) {
-            if(!$mdpOk AND !$emailOk) {
-                echo '<h3>Inscription réussi, bienvenue sur le compte administrateur, veuillez vous connecter :</h3>';
-            }
-            else {
-                echo'<h3>Attention il y a des erreurs dans votre formulaire</h3>';
-            }
-        }
-        else {
-            echo'<h3>Veuillez vous connecter</h3>';
-        }
-
-    }
-    else {
-
-        if(isset($mdpOk) AND isset($emailOk)) {
-            if(!$mdpOk AND !$emailOk) {
-                echo '<h3>Vous êtes déjà inscrit, voulez-vous vous connecter ?</h3>';
-            }
-            else {
-                echo'<h3>Attention il y a des erreurs dans votre formulaire</h3>';
-            }
-        }
-        else {
-            echo'<h3>Veuillez vous connecter</h3>';
-        }
-
-    }
-
-    if(!$mdpOk) {
-        echo '<span class="mdpIncorrect"> Mot de passe incorrect </span>' ;
-    }
-    else if(!$emailOk) {
-        echo '<span class="emailIncorrect"> Email incorrect </span>' ;
-    }
-?>
+<div class="bloc-co">
 
     <form action="./index.php?auth=connexion" method="POST" id="form_connexion">
-
-        <label for="email">Votre email : </label><input type="mail" name="mailco" id="email" value="
-        <?php
-
-        if(isset($_POST['email'])) {
-            echo $_POST['email'];
-        }
-
-        ?>" style="
+       <p>
+           <label for="email">Email</label>
+             <input type="mail" name="mailco" placeholder="Votre email" id="email"  style="
          <?php
             if(!$emailOk) {
                 echo 'border: 2px solid red';
             }
-          ?>">
+          ?>" autocomplete="off">
+       </p>
 
-        <label for="mdp">Votre mot de passe : </label> <input type="password" name="mdpco" id="mdp" style="
+        <p>
+
+        <label for="mdp">Mot de passe</label>
+        <input type="password" name="mdpco" placeholder="Votre mot de passe" id="mdp" style="
          <?php
 
         if(!$mdpOk) {
             echo 'border: 2px solid red';
         }
-        ?>">
-        <input type="submit" name="mail" id="btn_envoyer">
+        ?>" autocomplete="off">
+        </p>
+        <p>
+            <input class="btn" type="submit" name="mail" id="btn_envoyer">
+        </p>
     </form>
-    <a href="./index.php?auth=inscription">Pas encore inscrit ?</a>
+</div>
 
-
-<?php
-$content = ob_get_clean();
-require 'template.php';
-?>
+</body>
+</html>

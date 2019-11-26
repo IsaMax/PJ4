@@ -34,16 +34,20 @@ class AuthentificationController {
             // Si tout est identique on se connecte
             // Sinon on redirige vers connexion et on y affiche les erreurs
             if ($mdpOk AND $emailOk) {
-
+               
                 $id = $auth->getId();
                 session_start();
 
-                $_SESSION['id'] = $id;
+                $_SESSION['id'] = $id['id'];
                 $_SESSION['email'] = $_POST['mailco'];
+
+                setcookie('id', $_SESSION['id'], time()+365*24*3600, null, null, false, true );
+                setcookie('email', $_POST['mailco'], time()+365*24*3600, null, null, false, true );
 
                 header('Location: ./index.php?action=accueil');
             }
             else {
+
                 require 'vue/connexionView.php';
             }
         }

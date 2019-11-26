@@ -59,8 +59,9 @@ else
 
     // Render Facebook falogin button
     //$facebook_login_url = '<div align="center"><a href="'.$facebook_login_url.'"><img src="public/images/log-fb.png" width="300" height="auto" /></a></div>';
+    $facebook_login_url_modif = str_replace('&', '%26', $facebook_login_url);
 
-    $facebook_login_btn = '<a class="btn-connexion-fb" href="'.$facebook_login_url.'"><i class="fa fa-facebook-official"></i><span>Connectez-vous pour commenter !</span></a>';
+    $facebook_login_btn = '<a class="btn-connexion-fb" href="oauth.php?chapitre='.$_GET["chapitre"].'&url='.$facebook_login_url_modif.'"><i class="fa fa-facebook-official"></i><span>Connectez-vous pour commenter !</span></a>';
 
 
 }

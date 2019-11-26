@@ -27,52 +27,81 @@ $(function() {
                 }
             });
 
-           /* $(e.target).closest('.comment:not(.sous-comment)').next()
-            .append(
-            '<div class="js_form" style="3rem">'+
-                '<div>'+
-                    '<div class="avatar avatar-now"></div>'+
-                '</div>'+
-                '<form action="index.php?action=histoire&chapitre='+idChapitre+'&id_parent='+idParent+'" method="POST" id="answer">'+
-                    '<p><textarea placeholder="Laissez un commentaire..." name="commentaire_rep"></textarea></p>'+
-                '<p><input type="submit" name="send-comment" id="send-answer" value="envoyer"></p>'+
-                '</form>'+
-            '</div>');*/
-            }
-    
-    
-            $("html, body").stop()
-                .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);
+            /*$("html, body").stop()
+                .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);*/
+        }
+
+    });
+
+
+   /* $('body').on('click','.btn-connexion-fb', function(e) {
+        e.preventDefault();
+
+
+            $.ajax({
+                url : $(this).attr('href'),
+                type : 'POST',
+                dataType : 'html',
+
+                success : function(code_html){
+                    $(e.target).closest('.container-sous-comment')
+                        .append(code_html);
+                    console.log(code_html);
+                },
+
+                error : function(resultat){
+                    console.log(resultat);
+                }
+            });
+
+            /!*$("html, body").stop()
+                .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);*!/
+
+    });*/
+
+
+
+    /* $(e.target).closest('.comment:not(.sous-comment)').next()
+     .append(
+     '<div class="js_form" style="3rem">'+
+         '<div>'+
+             '<div class="avatar avatar-now"></div>'+
+         '</div>'+
+         '<form action="index.php?action=histoire&chapitre='+idChapitre+'&id_parent='+idParent+'" method="POST" id="answer">'+
+             '<p><textarea placeholder="Laissez un commentaire..." name="commentaire_rep"></textarea></p>'+
+         '<p><input type="submit" name="send-comment" id="send-answer" value="envoyer"></p>'+
+         '</form>'+
+     '</div>');*/
+
+
+
+    /*   $('input#send-comment').click(function(e) {
+
+          e.preventDefault();
+
+          $chapitre = $(this).data('chapitre');
+
+          $.post("index.php?action=histoire&chapitre="+$chapitre,
+          {
+            commentaire: $('#com textarea').val(),
+          }).done(function( msg ) {
+              $('html').html(msg);
+            });
         });
 
 
-  /*   $('input#send-comment').click(function(e) {
+        $('input#send-answer').click(function(e) {
 
-        e.preventDefault();
+          e.preventDefault();
 
-        $chapitre = $(this).data('chapitre');
-
-        $.post("index.php?action=histoire&chapitre="+$chapitre,
-        {
-          commentaire: $('#com textarea').val(),
-        }).done(function( msg ) {
-            $('html').html(msg);
-          });
-      });
-        
-
-      $('input#send-answer').click(function(e) {
-
-        e.preventDefault();
-
-        $.post("index.php?action=histoire&chapitre="+idChapitre+"&id_parent="+idParent,
-        {
-          commentaire_rep: $('#answer textarea').val(),
-        }).done(function( msg ) {
-            $('html').html(msg);
-            console.log(msg)
-          });
-      }); */
+          $.post("index.php?action=histoire&chapitre="+idChapitre+"&id_parent="+idParent,
+          {
+            commentaire_rep: $('#answer textarea').val(),
+          }).done(function( msg ) {
+              $('html').html(msg);
+              console.log(msg)
+            });
+        }); */
    
 
       /******* SLIDER ********/
@@ -233,6 +262,7 @@ $(function() {
     });
 
     console.log($('.btn_menu ~ ul'))
+
 
 
     $('.btn-connexion-fb').click( function (e){

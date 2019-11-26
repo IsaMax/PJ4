@@ -42,7 +42,7 @@ class editManager extends Manager {
                        ":titre"   => $_POST['titre'],
                        ":contenu" => $_POST['contenu'],
                        ":image"   => $_POST['lien_image'],
-                       ":id"      => $_GET['id']
+                       ":id"      => $_GET['chapitre']
         ]);
 
         return $valeurRetour;

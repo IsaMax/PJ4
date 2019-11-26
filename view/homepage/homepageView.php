@@ -148,6 +148,6 @@ ob_start();
 <?php 
 $secondContentRight = ob_get_clean();
 
-$titlePage = 'le blog de Jean FORTEROCHE';
+$titlePage = 'le blog de Jean FORTEROCHE - Accueil';
 require 'view/template.php';
 ?>

@@ -1,6 +1,4 @@
-<?php
-ob_start();
-?>
+
 <h3>Veuillez vous inscrire</h3>
 <form action="./index.php?auth=inscription" method="POST" id="form_inscription">
     <label for="email">Votre email : </label><input type="email" name="email" id="email">
@@ -11,9 +9,3 @@ ob_start();
 </form> <!-- vérifier les mdp avec js -->
 
 
-<?php
-$content = ob_get_clean();
-
-// Désactiver car ajax
- require 'vue/template.php';
-?>

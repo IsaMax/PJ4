@@ -4,7 +4,9 @@
     <title><?= $titlePage ?></title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Développement du projet 4 OpenClassroom par Maxime Isambert en php">
+    <meta name="author" content="Maxime Isambert">
+
 
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">

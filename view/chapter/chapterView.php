@@ -11,11 +11,11 @@ ob_start(); ?>
     <div class="article">
         <h1><?php  echo htmlspecialchars($chapterData['titre']);
                     if(isset($_SESSION['email']) AND isset($_SESSION['id'])) {
-                        echo '<a href="./admin/index.php?action=editer&chapitre='.$chapterData["id"].'" class="lien-editer-chapitre">(EDITER)</a>';
+                        echo '<a href="./admin/index.php?action=editer&chapitre='.$chapterData["id"].'&etat=maj" class="lien-editer-chapitre">(EDITER)</a>';
                         echo '<a href="./admin/index.php?action=supprimer&chapitre='.$chapterData["id"].'" class="lien-editer-chapitre">(SUPPPRIMER)</a>';
                     } ?></h1>
         <div class="content-body">
-            <?= htmlspecialchars($chapterData['contenu']); 
+            <?= $chapterData['contenu'];
 
     $titlePage = "chapitre ". htmlspecialchars($chapterData['id'])." : ".htmlspecialchars($chapterData['titre']);
     $firstContentLeft = ob_get_clean(); ?>
@@ -113,8 +113,25 @@ ob_start(); ?>
                             throw new Exception('Le commentaire auquel vous souhaitez répondre n\'existe pas');
                         } ?>
 
-                        <a href="verifcofb.php?chapitre=<?=$_GET['chapitre'] ?>&id_parent=<?= $chapterComments['id'] ?>&|<?= $facebook_login_url ?>" class="lien_repondre" data-chapitre = "<?= $para ?>" data-numComment = "<?= htmlspecialchars($chapterComments['id']); ?>">répondre</a>
-                        </span>
+                        <a href="verifcofb.php?chapitre=<?=$_GET['chapitre'] ?>&id_parent=<?= $chapterComments['id'] ?>&url=<?= $facebook_login_url_modif ?>" class="lien_repondre" data-chapitre = "<?= $para ?>" data-numComment = "<?= htmlspecialchars($chapterComments['id']); ?>">répondre</a>
+                        </span> <?php
+                       if(isset($_GET['id_parent']) AND $_GET['id_parent'] == $chapterComments['id']) {
+
+                           ?>
+
+                            <div class="js_form" style="3rem">
+                                <div>
+                                    <div class="avatar avatar-now">
+                                        <img src=<?= $_SESSION['user_image'] ?> />
+                                    </div>
+                                </div>
+                                <form action="index.php?action=histoire&chapitre=<?= $_GET['chapitre'] ?>&id_parent=<?= $_GET['id_parent'] ?>>" method="POST" id="answer">
+                                    <p><textarea placeholder="Laissez un commentaire..." name="commentaire_rep"></textarea></p>
+                                    <p><input type="submit" name="send-comment" id="send-answer" value="envoyer"></p>
+                                </form>
+                            </div>
+                        <?php
+                       }  ?>
                         <?php
                         if(isset($_SESSION['user_name']) AND isset($_SESSION['user_image'])) {
                             if ($chapterComments['pseudo'] == $_SESSION['user_name']) { ?>
@@ -153,7 +170,7 @@ ob_start(); ?>
 
                
                <div class="container-sous-comment"> <?php
-                foreach($answerTab as $elt) { 
+                foreach($answerTab as $elt) {
                     
                     
                     if($elt['id_parent'] == $chapterComments['id']) { 
@@ -204,8 +221,8 @@ ob_start(); ?>
                                 </div> 
                             </div>
                         </div>
-        <?php   }              
-            } echo '</div>';  
+        <?php   }
+            } echo '</div>';
         }
     }$chapterCommentsData->closeCursor();
 

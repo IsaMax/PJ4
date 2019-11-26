@@ -48,6 +48,6 @@ class AuthentificationManager extends Manager {
         $gir = $gi->prepare('SELECT id FROM utilisateur_BO WHERE email= ?');
         $gir->execute([$_POST['mailco']]);
 
-        return $gir->fetchAll();
+        return $gir->fetch();
     }
 }
