@@ -1,7 +1,6 @@
 <?php
 
 // récupère un article selon un id(GET), affiche les commentaires liés et permet d'en ajouter
-require_once 'model/Manager.php';
 
 class chapterManager extends Manager {
 
@@ -62,47 +61,16 @@ class chapterManager extends Manager {
         $alert->execute(array($_GET['alert']));
     }
 
-    public function alertAnswer() {
-
-        $data = $this->dbConnect();
-        $alertAnswer = $data->prepare('UPDATE reponse_commentaire SET signalement = 1 WHERE id = ?');
-        $alert->execute(array($_GET['alert']));
-    }
 
     public function getNextStories() {
 
         $data = $this->dbConnect();
-        $nst = $data->prepare('SELECT id, titre FROM billets WHERE id > ? LIMIT 0, 5');
+        $nst = $data->prepare('SELECT id, titre, lien_image FROM billets WHERE id > ? LIMIT 0, 5');
         $nst->execute(array($_GET['chapitre']));    
         return $nst;
     }
 
-    public function getCommentAnswers() {
 
-        $data = $this->dbConnect();
-        $gca = $data->query('SELECT *, DATE_FORMAT(date_reponse, "le %d/%m/%Y à %H:%m") AS date_rep FROM reponse_commentaire');
-        
-        return $gca;
-    }
-
-    public function postCommentAnswers() {
-
-        $data = $this->dbConnect();
-        $pca =$data->prepare('INSERT INTO reponse_commentaire(id_parent,
-                                                              pseudo,
-                                                              commentaire,
-                                                              url_image)
-                              VALUES(:id_parent,
-                                    :pseudo,
-                                     :commentaire,
-                                     :url_image)');
-
-        $pca->execute([":id_parent"   => $_GET['id_parent'],
-                       ":pseudo"      => $_SESSION['user_name'] ,
-                       ":commentaire" => $_POST['commentaire_rep'],
-                       ":url_image"    => $_SESSION['user_image']]);
-      
-    }
 
     public function editComment() {
 
@@ -115,17 +83,7 @@ class chapterManager extends Manager {
                       ":id_commentaire" => $_GET['id_commentaire']]);
     }
 
-    public function editCommentAnswer() {
-
-        $data = $this->dbConnect();
-        $ec = $data->prepare('UPDATE reponse_commentaire 
-                              SET commentaire = :new_commentaire
-                              WHERE id = :id_commentaire');
-        $ec->execute([
-                      ":new_commentaire" => $_POST['new_commentaire'],
-                      ":id_commentaire" => $_GET['id_commentaire']]);
-    }
-
+    
 
     public function supprComment() {
 
@@ -135,13 +93,5 @@ class chapterManager extends Manager {
         $sc->execute([":id_commentaire" => $_POST['id_commentaire']]);
     }
 
-
-    public function supprCommentAnswer() {
-
-        $data = $this->dbConnect(); 
-        $sc = $data->prepare('DELETE FROM reponse_commentaire
-                              WHERE id = :id_commentaire');
-        $sc->execute([":id_commentaire" => $_POST['id_commentaire']]);
-    }
 
 }

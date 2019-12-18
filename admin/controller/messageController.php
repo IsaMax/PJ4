@@ -3,10 +3,7 @@
 class messageController {
 
 
-
-    public  function afficherMessages() {
-
-        require 'model/messageManager.php';
+    public static function afficherMessages() {
 
         $am = new messageManager;
 

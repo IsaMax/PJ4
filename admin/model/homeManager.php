@@ -1,6 +1,5 @@
 <?php
 
-require 'model/Manager.php';
 
 class homeManager extends Manager {
 
@@ -29,5 +28,13 @@ class homeManager extends Manager {
         $rm = $db->query('SELECT COUNT(*) AS nbr_messages FROM contact');
 
         return $rm->fetch();
+    }
+
+    public function compteNombreBillets() {
+        $db = $this->dbConnect();
+
+        $cnb = $db->query('SELECT COUNT(*) AS nbr_billets from billets');
+
+        return $cnb->fetch();
     }
 }

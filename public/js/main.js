@@ -34,75 +34,6 @@ $(function() {
     });
 
 
-   /* $('body').on('click','.btn-connexion-fb', function(e) {
-        e.preventDefault();
-
-
-            $.ajax({
-                url : $(this).attr('href'),
-                type : 'POST',
-                dataType : 'html',
-
-                success : function(code_html){
-                    $(e.target).closest('.container-sous-comment')
-                        .append(code_html);
-                    console.log(code_html);
-                },
-
-                error : function(resultat){
-                    console.log(resultat);
-                }
-            });
-
-            /!*$("html, body").stop()
-                .animate( { scrollTop: $(e.target.closest('.comment')).next().find('.js_form').offset().top }, 500);*!/
-
-    });*/
-
-
-
-    /* $(e.target).closest('.comment:not(.sous-comment)').next()
-     .append(
-     '<div class="js_form" style="3rem">'+
-         '<div>'+
-             '<div class="avatar avatar-now"></div>'+
-         '</div>'+
-         '<form action="index.php?action=histoire&chapitre='+idChapitre+'&id_parent='+idParent+'" method="POST" id="answer">'+
-             '<p><textarea placeholder="Laissez un commentaire..." name="commentaire_rep"></textarea></p>'+
-         '<p><input type="submit" name="send-comment" id="send-answer" value="envoyer"></p>'+
-         '</form>'+
-     '</div>');*/
-
-
-
-    /*   $('input#send-comment').click(function(e) {
-
-          e.preventDefault();
-
-          $chapitre = $(this).data('chapitre');
-
-          $.post("index.php?action=histoire&chapitre="+$chapitre,
-          {
-            commentaire: $('#com textarea').val(),
-          }).done(function( msg ) {
-              $('html').html(msg);
-            });
-        });
-
-
-        $('input#send-answer').click(function(e) {
-
-          e.preventDefault();
-
-          $.post("index.php?action=histoire&chapitre="+idChapitre+"&id_parent="+idParent,
-          {
-            commentaire_rep: $('#answer textarea').val(),
-          }).done(function( msg ) {
-              $('html').html(msg);
-              console.log(msg)
-            });
-        }); */
-   
 
       /******* SLIDER ********/
 
@@ -116,12 +47,7 @@ $(function() {
              $('.bloc-photos').css({'transform':'translateX('+(-100*(i-1))+'vw)'});    
 
       });
-        let photo = $('.bloc-photos > .photo'+i);
-        photo.css({ 'background-image':'url('+photo .data('url-photo')+')',
-                    'background-size':'cover', 
-                    'background-repeat':'no-repeat',
-                    'background-position':'center' 
-                });
+
     }
 
 
@@ -132,29 +58,29 @@ $(function() {
         $(this).closest('.comment').find('.commentaire').attr('contenteditable','true').css({'background-color':'white'}).focus();
         $form_edit = $(this).closest('.infos-comment').find('.form-editer-commentaire').serialize();
 
-        $(this).closest('.comment').find('.commentaire').keypress(function(e) {        
+        $(this).closest('.comment').find('.commentaire').keypress(function(e) {
 
             if(e.keyCode === 13) {
 
                 $(this).attr('contenteditable','false').css({'background-color':'#f5f5f5'});
-                
+
                 $nv_comm = $(this).find('.commennt-body').text();
 
                 $.ajax({
                     url : '/blog/index.php?action=histoire&'+$form_edit,
                     type : 'POST',
-                    data : 'new_commentaire=' + $nv_comm, 
+                    data : 'new_commentaire=' + $nv_comm,
                     dataType : 'html',
-                    
-                    success : function(code_html){ 
-                        
+
+                    success : function(code_html){
+
                        // console.log(code_html);
                     },
-             
+
                     error : function(resultat){
                         //console.log(resultat);
                     }
-                });         
+                });
             }
         });
     });
@@ -188,7 +114,7 @@ $(function() {
     });
 
 
-     /* édition d'une réponse de commentaire avec contenteditable et ajax */
+    /* /!* édition d'une réponse de commentaire avec contenteditable et ajax *!/
      $('.edit-comment-answer').click(function(e) {
 
         e.preventDefault();
@@ -221,10 +147,10 @@ $(function() {
                 });         
             }
         });
-    });
+    });*/
 
 
-    // Suppression d'une réponse de commentaire
+   /* // Suppression d'une réponse de commentaire
     $('.suppr-comment-answer').click(function(e) {
 
         e.preventDefault();
@@ -249,7 +175,7 @@ $(function() {
                 //console.log(resultat);
             }
         });         
-    });
+    });*/
 
     $('.btn_menu').click(function(e) {
 

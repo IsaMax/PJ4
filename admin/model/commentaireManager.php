@@ -1,7 +1,5 @@
 <?php
 
-require 'model/Manager.php';
-
 class commentaireManager extends Manager {
 
     public function rechercherCommentaires() {
@@ -11,20 +9,13 @@ class commentaireManager extends Manager {
         $rc = $db->query('SELECT DATE_FORMAT(date_commentaire, "%d/%m/%Y") AS date_format, titre, id_billet, pseudo, commentaire, url_image
                         FROM commentaires 
                         INNER JOIN billets 
-                        ON commentaires.id_billet = billets.id'
+                        ON commentaires.id_billet = billets.id
+                        ORDER BY titre'
                         );
 
         return $rc->fetchAll();
     }
 
-    public function rechercheBilletLie() {
-
-        $db = $this->dbConnect();
-
-        $rbl = $db->query('SELECT titre FROM billets');
-
-        return $rbl->fetchAll();
-    }
 
     public function compterCommentaires() {
 

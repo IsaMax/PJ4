@@ -1,22 +1,24 @@
 <?php 
 
-require 'model/contactManager.php';
 
 class contactController {
 
-    public function getMessage() {
+    public static function postMessage() {
 
         if(isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['contenu'])) {
 
             $message = new contactManager();
-            $success = $message->insertMessage($_POST['prenom'], $_POST['mail'], $_POST['contenu']);
+            $success = $message->postMessage();
 
-            //header('Location: index.php?action=contact&success='.$success);
+            if($success) {
+
+                mail("maxime.isambert@gmail.com", "Message privé du Blog J. Forteroche", $_POST['contenu']);
+
+                header('Location: index.php?action=contact&send=ok');
+            }
+            else {
+                header('Location: index.php?action=contact&send=non');
+            }
         }
-        else {
-            $success = false;
-           // header('Location: index.php?action=contact&success='.$success);
-        }
-        require 'view/contact/contactView.php';
     }
 }

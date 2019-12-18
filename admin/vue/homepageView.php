@@ -5,6 +5,7 @@ ob_start();
 <div class="container-bloc-articles">
 
     <?php
+    $inc = 0;
         foreach ($reqs as $req) { ?>
 
             <div class="bloc-chapitre">
@@ -14,20 +15,31 @@ ob_start();
                     </span>
 
                     <span>
-                        <a href="index.php?action=supprimer&chapitre=<?= $req['id']; ?>" onclick="return confirm('Voulez-vous vraiment supprimer ?')"><i class="fa fa-trash"></i>Supprimer</a>
+                       <?php
+                        $_SESSION['chapitreASupprimer'] = $req['id'];
+                       ?>
+                        <a href="index.php?action=supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ?')"><i class="fa fa-trash"></i>Supprimer</a>
                     </span>
                 </div>
                 <div class="illustration-chapitre" style="<?= 'background-image: url('.$req["lien_image"].')';?>">
                 </div>
                 <div class="informations-chapitre">
                     <h4 class="titre-chapitre"><?= $req['titre']; ?></h4>
-                    <p class="extrait-chapitre"><?= substr($req['contenu'], 0, 100).'...'; ?></p>
-                    <a href="./../index.php?action=histoire&chapitre=<?= $req['id'] ?>"></a>
+                    <p class="extrait-chapitre"><?= substr(strip_tags($req['contenu']), 0, 100).'...'; ?></p>
+                    <a href="/blog/histoire/chapitre-<?= $req['id'] ?>"></a>
                 </div>
             </div>
-    <?php } ?>
+    <?php
+        $inc++;
+        } ?>
 
-        <a class="bloc-chapitre ajouter-chapitre" href="index.php?action=editer"> + </a>
+        <a class="bloc-chapitre ajouter-chapitre" href="nouveau-chapitre">
+            <?php
+            if($inc == 0) {
+                echo '<span>Aucun billets trouvés : ajouter</span>';
+            }
+            ?>+
+        </a>
 </div>
 
 <?php

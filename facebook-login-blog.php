@@ -8,9 +8,31 @@ $facebook_helper = $facebook->getRedirectLoginHelper();
 
 if(isset($_COOKIE['user_image']) AND isset($_COOKIE['user_name'])) {
 
+    //Si on est connecté, on stocke les infos de cookies dans une session
     session_start();
     $_SESSION['user_image'] = $_COOKIE['user_image'];
     $_SESSION['user_name'] = $_COOKIE['user_name'];
+
+
+    // Ramène directement au formulaire de commentaire après identification facebook
+    if(isset($_COOKIE['chapitre'])) {
+
+        if(isset($_COOKIE['id_parent'])) {
+
+            $desTemp = $_COOKIE["id_parent"];
+            setcookie('id_parent');
+            unset($_COOKIE['id_parent']);
+
+            header('Location: histoire/chapitre-'.$_COOKIE["chapitre"].'-'.$desTemp);
+        }
+        else {
+            $desTemp = $_COOKIE["chapitre"];
+            setcookie('chapitre');
+            unset($_COOKIE['chapitre']);
+
+            header('Location: histoire/chapitre-'.$desTemp);
+        }
+    }
 
 }
 else if(isset($_GET['code']))
@@ -57,25 +79,11 @@ else
 {
     $facebook_login_url = $facebook_helper->getLoginUrl('https://maxime.agences.tw/blog/');
 
-    // Render Facebook falogin button
-    //$facebook_login_url = '<div align="center"><a href="'.$facebook_login_url.'"><img src="public/images/log-fb.png" width="300" height="auto" /></a></div>';
+  // pour transmettre toute l'url générée de fb via un get on transform le & en %26
     $facebook_login_url_modif = str_replace('&', '%26', $facebook_login_url);
 
-    $facebook_login_btn = '<a class="btn-connexion-fb" href="oauth.php?chapitre='.$_GET["chapitre"].'&url='.$facebook_login_url_modif.'"><i class="fa fa-facebook-official"></i><span>Connectez-vous pour commenter !</span></a>';
+    //Avant de se diriger vers fb, on envoie la requête à oauth pour créer des cookies
+    $facebook_login_btn = '<a class="btn-connexion-fb" href="/blog/oauth.php?chapitre='.$_GET["chapitre"].'&url='.$facebook_login_url_modif.'"><i class="fa fa-facebook-official"></i><span>Connectez-vous pour commenter !</span></a>';
 
 
 }
-
-
-/* if(isset($facebook_login_url))
-{
-    echo $facebook_login_url;
-}
-else
-{
-    echo '<div class="panel-heading">Welcome User</div><div class="panel-body">';
-    echo '<img src="'.$_SESSION["user_image"].'" class="img-responsive img-circle img-thumbnail" />';
-    echo '<h3><b>Name :</b> '.$_SESSION['user_name'].'</h3>';
-
-    echo '<h3></h3><a href="logout.php">Logout</h3></div>';
-}  */

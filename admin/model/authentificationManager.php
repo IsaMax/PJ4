@@ -1,7 +1,5 @@
 <?php
 
-require 'model/Manager.php';
-
 class AuthentificationManager extends Manager {
 
     public function verificationEmail() {

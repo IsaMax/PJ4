@@ -25,22 +25,21 @@ if($donnesAEditer != null) {
         if (isset($_GET['chapitre'])) {
             echo '&chapitre=' . $_GET['chapitre'];
         } ?>"
-              method="POST">
+              method="POST" enctype="multipart/form-data">
             <p>
                 <label for="titre_edit" class="label-titre">Titre du chapitre <span class="danger">*</span></label>
                 <input type="text" name="titre" id="titre_edit" value="<?= $elt['titre'] ?>" required>
             </p>
 
             <p>
-                <label for="lien_image_edit" class="label-lien">Lien de l'image <span class="danger">*</span></label>
-                <input type="text" name="lien_image" id="lien_image_edit" value="<?= $elt['lien_image'] ?>" required>
+                <label for="lien_image_edit" class="label-lien">Votre image <span class="danger">*</span></label>
+                <input type="file" name="lien_image" id="lien_image_edit" value="<?= $elt['lien_image'] ?>" required>
             </p>
 
             <p>
                 <label for="contenu_edit" class="label-contenu">Contenu du chapitre <span class="danger">*</span></label>
-                <textarea name="contenu" id="contenu_edit" required><?= $elt['contenu'] ?></textarea>
+                <textarea name="contenu" id="contenu_edit"><?= $elt['contenu'] ?></textarea>
             </p>
-
             <p>
                 <input type="submit" id="btn_edit" value="valider" class="btn envoyer">
                 <input type="reset" value="reset" class="btn reset">
@@ -57,18 +56,25 @@ else { ?>
     if (isset($_GET['chapitre'])) {
         echo '&chapitre=' . $_GET['chapitre'];
     } ?>"
-          method="POST">
-        <label for="titre_edit" class="label-titre">Titre du chapitre <span class="danger">*</span></label>
-        <input type="text" name="titre" id="titre_edit" required>
+          method="POST" enctype="multipart/form-data">
 
-        <label for="lien_image_edit" class="label-lien">Lien de l'image <span class="danger">*</span></label>
-        <input type="text" name="lien_image" id="lien_image_edit" required>
+        <p>
+            <label for="titre_edit" class="label-titre">Titre du chapitre <span class="danger">*</span></label>
+            <input type="text" name="titre" id="titre_edit" required>
+        </p>
+        <p>
+            <label for="lien_image_edit" class="label-lien">Votre image <span class="danger">*</span></label>
+            <input type="file" name="lien_image" id="lien_image_edit" required>
+        </p>
 
-        <label for="contenu_edit" class="label-contenu">Contenu du chapitre <span class="danger">*</span></label>
-        <textarea name="contenu" id="contenu_edit" required></textarea>
-
+        <p>
+            <label for="contenu_edit" class="label-contenu">Contenu du chapitre <span class="danger">*</span></label>
+            <textarea name="contenu" id="contenu_edit" ></textarea>
+        </p>
+        <p>
         <input type="submit" id="btn_edit" value="valider" class="btn envoyer">
         <input type="reset" value="reset" class="btn reset">
+        </p>
     </form>
 <?php
 }

@@ -1,0 +1,17 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^accueil$ index.php?action=accueil [L]
+
+RewriteRule ^commentaires$ index.php?action=commentaires [L]
+RewriteRule ^messages$ index.php?action=messages [L]
+
+RewriteRule ^signalement$ index.php?action=signalement [L]
+
+RewriteRule ^nouveau-chapitre$ index.php?action=editer [L]
+
+RewriteRule ^se-connecter$ index.php?auth=connexion [L]
+
+RewriteRule ^inscription$ index.php?auth=connexion&inscription [L]
+
+RewriteRule ^edition/chapitre-([0-9]+)$ index.php?action=editer&chapitre={1}&etat=maj [L]

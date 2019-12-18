@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title><?= $titlePage ?></title>
     <meta charset="utf-8">
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="public/css/pj4.css">
-    <link rel="stylesheet" href="public/css/responsive.css">
+    <link rel="stylesheet" href="/blog/public/css/pj4.css">
+    <link rel="stylesheet" href="/blog/public/css/responsive.css">
 </head>
 <body>
 

@@ -17,7 +17,7 @@ input:focus {
 }
 
 .infos-statut {
-    width: 85%;
+    width: 89%;
     background: #33414e;
     position: relative;
     padding-right: 2rem;
@@ -61,10 +61,10 @@ nav.nav-horizontale > div:last-child a:hover i {
     font-size: 1.2em;
     text-transform: uppercase;
     text-align: center;
-    width: 15%;
+    width: 220px;
     background: #f5bb00;
     height: 75px;
-    min-width: 200px;
+
 }
 
 .auteur a {
@@ -97,9 +97,11 @@ nav.nav-horizontale {
 }
 
 section.bloc-global .aside-verticale {
-    width: 15%;
+    width: 220px;
     background:#33414e;
     height: inherit;
+    transform: translateX(0);
+    transition: transform .5s;
 }
 
 .heure, .minute, .seconde {
@@ -109,6 +111,7 @@ section.bloc-global .aside-verticale {
 section.bloc-global {
     display: flex;
     min-height: calc(100vh - 75px);
+    background: #f0f0f0;
 }
 
 nav.nav-verticale ul {
@@ -139,6 +142,10 @@ nav.nav-verticale ul li {
 
 .bloc-total.infos-temps {
     justify-content: center;
+}
+
+.bloc-total.infos-temps .horloge {
+    width: 200px;
 }
 
 .bloc-total.infos-temps .horloge {
@@ -177,6 +184,7 @@ nav.nav-verticale ul li:hover {
 
 .container-bloc-infos {
     display: flex;
+    height: auto;
 }
 
 section.bloc-central {
@@ -352,6 +360,12 @@ a.bloc-chapitre.ajouter-chapitre {
     align-self: center;
 }
 
+.ajouter-chapitre span {
+    font-size: 15px;
+    color: red;
+    display: block;
+}
+
 form.form-edition {
     width: 70%;
     margin: 0 auto;
@@ -403,15 +417,9 @@ input[type=text], input[type=mail], input[type=password] {
     border-radius: 5px;
 }
 
-.btn:hover {
-    color: #f5bb00;
-    background: white;
-}
+.btn:hover { color: #f5bb00; background: white; }
 
-.danger {
-    color: red !important;
-    font-weight: bold;
-}
+.danger { color: red !important; font-weight: bold; }
 
 /* page connexion */
 
@@ -439,13 +447,8 @@ form#form_connexion {
     width: 100%;
 }
 
-form#form_connexion > p {
-    width: 35%;
-}
-
-form#form_connexion > p:last-child {
-    text-align: center;
-}
+form#form_connexion > p { width: 35%; }
+form#form_connexion > p:last-child { text-align: center; }
 
 /* style tableau signalement commentaires */
 
@@ -464,21 +467,10 @@ thead tr {
     font-size: 1.1em;
 }
 
-thead tr td {
-    padding: .3em;
-}
-
-table thead > tr:first-child > td:nth-child(2) {
-    width: 12%;
-}
-
-table thead > tr:first-child > td:nth-child(4) {
-    width: 15%;
-}
-
-tbody {
-    text-align: center;
-}
+thead tr td { padding: .3em; }
+table thead > tr:first-child > td:nth-child(2) {  width: 12%; }
+table thead > tr:first-child > td:nth-child(4) { width: 15%; }
+tbody { text-align: center; }
 
 tbody tr td {
     height: auto;
@@ -486,30 +478,18 @@ tbody tr td {
     word-break: break-word;
 }
 
-tbody > tr:nth-child(even) {
-    background: #f5bb0014;
-}
+tbody > tr:nth-child(even) { background: #f5bb0014; }
+form#js-choix-signalement { margin-top: 2rem; }
 
-form#js-choix-signalement {
-    margin-top: 2rem;
-}
-
-td {
-    border-bottom: 1px solid #f5bb00;
-}
-
-thead tr td {
-    border: 1px solid #FFF;
-}
+td { border-bottom: 1px solid #f5bb00; }
+thead tr td { border: 1px solid #FFF; }
 
 input.btn.btn-signalement {
     margin-left: 5%;
     margin-top: 1rem;
 }
 
-input[type=radio] {
-    display: none;
-}
+input[type=radio] { display: none; }
 
 label.checkbox {
     width: 20px;
@@ -520,14 +500,9 @@ label.checkbox {
     cursor: pointer;
 }
 
-input[type=radio]:checked + label {
-    background: #f5bb00;
-}
+input[type=radio]:checked + label { background: #f5bb00; }
 
-.message-vert {
-    color: #0cca0c !important;
-    font-weight: bold !important;
-}
+.message-vert { color: #0cca0c !important; font-weight: bold !important; }
 
 /* tableau des messages */
 
@@ -550,27 +525,19 @@ tr.titre-billet {
     text-transform: uppercase;
 }
 
-.tab-commentaires thead tr td {
-    padding: 1rem;
-}
+.tab-commentaires thead tr td { padding: 1rem; }
+.tab-commentaires tbody > tr:nth-child(even) { background: #f5f5f5; }
+table.tab-commentaires tbody tr > td:nth-child(3) { font-weight: bold; }
+.tab-commentaires .cadre-2 { border-right: 3px solid #f5bb00; }
+.tab-commentaires .cadre-1 { border-left: 3px solid #f5bb00; }
+.tab-commentaires > tbody > tr.titre-billet:not(:first-child) { border-top: 2px solid #f5bb00; }
 
-.tab-commentaires tbody > tr:nth-child(even) {
-    background: #f5f5f5;
-}
+.auteur a.active { background-color: transparent; }
+.auteur a.active:after { transform:  translate(-20px,0px) rotate(45deg); }
+.auteur a.active:before { transform:  translate(-20px,0px) rotate(-45deg); }
 
-table.tab-commentaires tbody tr > td:nth-child(3) {
-    font-weight: bold;
-}
+section.bloc-global .aside-verticale.active { transform: translateX(0); }
 
-.tab-commentaires .cadre-2 {
-    border-right: 3px solid #f5bb00;
-}
-
-.tab-commentaires .cadre-1 {
-    border-left: 3px solid #f5bb00;
-}
-
-.tab-commentaires > tbody > tr.titre-billet:not(:first-child) {
-    border-top: 2px solid #f5bb00;
-}
+.bloc-total.nbr_billets_publies,
+.bloc-total.nbr_billets_publies i { color: #0e96f7; }
 

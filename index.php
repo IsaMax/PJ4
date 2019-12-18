@@ -1,40 +1,16 @@
 <?php
-//réexpliquer valeur unique dans les tables 
-// Commentaire qui se poste plusieurs fois avec le rechargement de la page
-// on attrape ici toutes les erreurs qui se présenteront dans le code (faire page spéciale)
 
+require 'autoload.php';
 include 'facebook-login-blog.php';
     
 try {
 
-    if(isset($_COOKIE['chapitre'])) {
-
-        if(isset($_COOKIE['id_parent'])) {
-
-            $desTemp = $_COOKIE["id_parent"];
-            setcookie('id_parent');
-            unset($_COOKIE['id_parent']);
-
-            header('Location: index.php?action=histoire&chapitre='.$_COOKIE["chapitre"].'&id_parent='.$desTemp);
-        }
-        else {
-            $desTemp = $_COOKIE["chapitre"];
-            setcookie('chapitre');
-            unset($_COOKIE['chapitre']);
-
-            header('Location: index.php?action=histoire&chapitre='.$desTemp);
-        }
-
-    }
-    
-    else if(isset($_GET['action'])) {
+    if(isset($_GET['action'])) {
         
         switch($_GET['action']) {
 
             case 'accueil':
-                require 'controller/homeController.php';
-                $homepage = new homeController();
-                $homepage->getHomepage();
+                homeController::getHomepage();
             break;
 
             case 'histoire':
@@ -42,62 +18,44 @@ try {
                 if(isset($_GET['chapitre'])) {
                     $_GET['chapitre'] = (int) $_GET['chapitre'];
 
-                    if($_GET['chapitre'] > 0) {         // ici répérer le nbr d'article pour réguler $chapitre
-                        require 'controller/chapterController.php';
-                        $story = new chapterController();
-                     
-                        $story->getChapter();
+                    if($_GET['chapitre'] > 16 AND $_GET['chapitre'] <= 24 ) {
+
+                        chapterController::getChapter();
                     }
                     else {
                         throw new Exception('Cette page ne correspond à aucun chapitre');
                     }
                 }
                 else {
-                    header('Location: /blog/index.php?action=histoire&chapitre=1');
+                    header('Location: histoire-17');
                 }
             break;  
 
-            case 'biographie':
-                require 'controller/biographyController.php';
-                $bio = new biographyController();
-                //$bio-> ;
-            break;
-
             case 'contact':
-                require 'controller/contactController.php';
-                $contact = new contactController();
-                $contact->getMessage();
-            break;
-            case 'logout':
+                if(isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['contenu'])) {
 
-                if (ini_get("session.use_cookies")) {
-                    $params = session_get_cookie_params();
-                    setcookie(session_name(), '', time() - 42000,
-                        $params["path"], $params["domain"],
-                        $params["secure"], $params["httponly"]
-                    );
+                    contactController::postMessage();
                 }
-                
-                session_destroy();
-                setcookie('user_image');
-                setcookie('user_name');
-                unset($_COOKIE['user_name']);
-                unset($_COOKIE['user_image']);
-
-                header('location:index.php');
+                else {
+                    require 'view/contact/contactView.php';
+                }
                 break;
+
+            case 'logout':
+                require 'logout.php';
+                break;
+
             default:
-                throw new Exception('La page que vous recherchez n\'existe pas !');
-            // on redirige sur la page d'accueil ou une page 404 ?
-            break;
+                throw new Exception('Cette page n\'existe pas');
+                break;
         }
     }
-    else {
-       
-        header('Location: index.php?action=accueil');
-    }
+    else { header('Location: accueil'); }
 }
+
 catch(Exception $erreur) {
 
-    die('erreur : '.$erreur->getMessage());
+    erreurController::afficheErreur($erreur->getMessage());
+
+  /*  header('Location: index.php?action=erreur&erreur='.$erreur->getMessage());*/
 }

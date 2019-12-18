@@ -1,7 +1,6 @@
 <?php
 // ici on récupère tous les articles (et les derniers selon condition) et le nbr de commentaires par article
 
-require_once 'model/Manager.php';
 
 class homeManager extends Manager {
 
@@ -9,24 +8,24 @@ class homeManager extends Manager {
 
         $data = $this->dbConnect();
         $gs = $data->query('SELECT * , DATE_FORMAT(date_billet, "%d,%m,%Y") AS publi_billet FROM billets');
-        return $gs;
+        return $gs->fetchAll();
     }
 
     public function getRecentStories() {
 
         $data = $this->dbConnect();
-        $grs = $data->query('SELECT id,titre FROM billets ORDER BY id DESC LIMIT 0,5');
+        $grs = $data->query('SELECT id,titre,lien_image FROM billets ORDER BY id DESC LIMIT 0,5');
         return $grs;
     }
 
     public function lastComments() {
 
         $data = $this->dbConnect();
-        $lc = $data->query('SELECT id, id_billet, pseudo, commentaire FROM commentaires ORDER BY id DESC LIMIT 0, 6');
+        $lc = $data->query('SELECT * FROM commentaires ORDER BY id DESC LIMIT 0, 6');
         return $lc;
     }
 
-    public function countCommentsPerArticle() { // nbr de commentaires par article
+    public function countCommentsPerArticle() { 
         
         $data = $this->dbConnect();
         $cca = $data->query('SELECT b.id, COUNT(c.id_billet) AS nbrComms

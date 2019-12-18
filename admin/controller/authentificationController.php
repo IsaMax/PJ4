@@ -1,10 +1,8 @@
 <?php
 
-require 'model/authentificationManager.php';
-
 class AuthentificationController {
 
-    public function connexion() {
+    public static function connexion() {
 
         if(isset($_POST['mailco']) AND isset($_POST['mdpco'])) {
 
@@ -44,7 +42,7 @@ class AuthentificationController {
                 setcookie('id', $_SESSION['id'], time()+365*24*3600, null, null, false, true );
                 setcookie('email', $_POST['mailco'], time()+365*24*3600, null, null, false, true );
 
-                header('Location: ./index.php?action=accueil');
+                header('Location: accueil');
             }
             else {
 
@@ -56,7 +54,7 @@ class AuthentificationController {
         }
     }
 
-    public function inscription() {
+    public static function inscription() {
 
         if(isset($_POST['email']) AND isset($_POST['mdp'])) {
 
@@ -69,7 +67,7 @@ class AuthentificationController {
                 $mdpCrypte = password_hash($_POST['mdp'], PASSWORD_BCRYPT);
 
                 $auth->insererDonneesInscr($mdpCrypte);
-               header('Location: index.php?auth=connexion&inscription');
+               header('Location: inscription');
             }
             else {
                 require 'vue/pageInscription.php';

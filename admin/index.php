@@ -1,26 +1,18 @@
 <?php
 
-// connexion automatique
-if(isset($_COOKIE['id']) AND isset($_COOKIE['email'])) {
-    session_start();
-
-    $_SESSION['id'] = $_COOKIE['id'];
-    $_SESSION['email'] = $_COOKIE['email'];
-}
+require 'autoload.php';
+require 'autoCo.php';
 
 if(isset($_SESSION['email']) AND isset($_SESSION['id'])) {
 
     switch($_GET['action']) {
 
         case 'accueil':
-            require 'controller/homeController.php';
-       
-            $acc = new homeController;
-            $acc->afficherChapitre();
+
+            homeController::afficherChapitre();
             break;
+
         case 'editer':
-            require 'controller/editController.php';
-            $edt = new editController;
             
             if(isset($_GET['chapitre'])) {
 
@@ -31,10 +23,10 @@ if(isset($_SESSION['email']) AND isset($_SESSION['id'])) {
                     if (isset($_GET['etat'])) {
 
                         if($_GET['etat'] == 'enregistrement') {
-                            $edt->majChapitre();
+                            editController::majChapitre();
                         }
                         else {
-                            $edt->editerChapitre();
+                            editController::editerChapitre();
                         }
                     }
                     else {
@@ -50,78 +42,68 @@ if(isset($_SESSION['email']) AND isset($_SESSION['id'])) {
                 if (isset($_GET['etat'])) {
 
                     if($_GET['etat'] == 'enregistrement') {
-                        $edt->enregistrerChapitre();
+                        editController::enregistrerChapitre();
                     }
                     else {
                         throw new Exception('erreur: action non désirée');
                     }
                 }
                 else {
-                    $edt->editerChapitre();
+                    editController::editerChapitre();
                 }
             }
             break;
+
         case 'supprimer':
-            $co = new AuthentificationController;
-            $co->connexion();
+
+            editController::supprimerChapitre();
             break;
+
         case 'signalement':
-            require 'controller/signalementController.php';
-            $co = new signalementController;
 
             if(isset($_GET['operation']) AND $_GET['operation'] == 'traitement_signalement') {
-                $co->traitementSignalement();
+                signalementController::traitementSignalement();
             }
             else {
-                $co->gererSignalement();
+                signalementController::gererSignalement();
             }
             break;
+
         case 'messages':
-            require 'controller/messageController.php';
-            $ms = new messageController;
-            $ms->afficherMessages();
+
+            messageController::afficherMessages();
             break;
+
         case 'commentaires':
-            require 'controller/commentaireController.php';
-            $ms = new commentaireController;
-            $ms->afficherCommentaires();
+
+            commentaireController::afficherCommentaires();
             break;
+
         case 'deconnecter':
 
-            session_destroy();
-            unset($_SESSION);
-
-            setcookie('id');
-            setcookie('email');
-
-            unset($_COOKIE['id']);
-            unset($_COOKIE['email']);
-
-            header('Location: index.php');
+            require 'logout.php';
             break;
+
         default:
-            header('Location: index.php?action=accueil');
+            header('Location: accueil');
             break;
     }
-
 }
 
 else  {
 
-    require 'controller/authentificationController.php';
-
     switch($_GET['auth']) {
 
         case 'connexion':
-            $co = new AuthentificationController;
-            $co->connexion();
+
+            AuthentificationController::connexion();
             break;
         case 'inscription':
-            $ins = new AuthentificationController;
-            $ins->inscription();
+
+            AuthentificationController::inscription();
             break;
         default:
-            header('Location: index.php?auth=connexion');
+            header('Location: se-connecter');
             break;
     }
-}
+}

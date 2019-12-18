@@ -1,0 +1,16 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^accueil$ index.php?action=accueil [L]
+
+RewriteRule ^histoire/chapitre-([0-9]+)$ index.php?action=histoire&chapitre=$1 [L]
+
+RewriteRule ^contact$ index.php?action=contact [L]
+
+RewriteRule ^erreur-([a-zA-Z]+)$ index.php?action=erreur&erreur=$1 [L]
+
+RewriteRule ^se-deconnecter$ index.php?action=logout [L]
+
+RewriteRule ^histoire/chapitre-([0-9]+)-([0-9]+)$ index.php?action=histoire&chapitre={1}&id_parent={2} [L]
+
+#RewriteRule ^histoire$ index.php?action=histoire&chapitre=1 [L]

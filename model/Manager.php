@@ -1,5 +1,7 @@
 <?php
 
+
+//protected ne pourra etre appele que dans la classe et les classes qui en hérite
 class Manager {
 
     protected function dbConnect() {
@@ -8,14 +10,3 @@ class Manager {
         return $db;
     }
 }
-
-    /* 
-
-    récupérer toute l'histoire ; les derniers articles
-    
-    les derniers commentaires
-    Un article en particulier
-    les commentaires liés à cet article
-    écrire un commentaire
-
-    */

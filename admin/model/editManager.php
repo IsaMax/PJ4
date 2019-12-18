@@ -1,7 +1,5 @@
 <?php
 
-require 'model/Manager.php';
-
 class editManager extends Manager {
 
     public function getAllChapter() {
@@ -13,7 +11,7 @@ class editManager extends Manager {
         return $gac->fetchAll();
     }
 
-    public function enregistrerChapitre() {
+    public function enregistrerChapitre($chemin) {
         $db = $this->dbConnect();
 
         $ec = $db->prepare('INSERT INTO billets(titre, contenu, lien_image)
@@ -22,13 +20,13 @@ class editManager extends Manager {
         $valeurRetour = $ec->execute([
                     ":titre"   => $_POST['titre'],
                     ":contenu" => $_POST['contenu'],
-                    ":image"   => $_POST['lien_image']
+                    ":image"   => $chemin
         ]);
 
         return $valeurRetour;
     }
 
-    public function majChapitre() {
+    public function majChapitre($chemin) {
 
         $db = $this->dbConnect();
 
@@ -41,10 +39,27 @@ class editManager extends Manager {
         $valeurRetour = $majc->execute([
                        ":titre"   => $_POST['titre'],
                        ":contenu" => $_POST['contenu'],
-                       ":image"   => $_POST['lien_image'],
+                       ":image"   => $chemin,
                        ":id"      => $_GET['chapitre']
         ]);
 
         return $valeurRetour;
+    }
+
+    public function supprimerChapitre() {
+        $db = $this->dbConnect();
+
+        $sc = $db->prepare('DELETE from billets 
+                            WHERE id = ?');
+
+        $sc->execute([$_SESSION['chapitreASupprimer']]);
+
+        // on a supprimé le chapitre, il faut aussi supprimer les commentaires associés !
+        $db = $this->dbConnect();
+
+        $scc = $db->prepare('DELETE from commentaires 
+                            WHERE id_billet = ?');
+
+        $scc->execute([$_SESSION['chapitreASupprimer']]);
     }
 }

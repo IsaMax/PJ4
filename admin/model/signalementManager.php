@@ -1,6 +1,5 @@
 <?php
 
-require 'model/Manager.php';
 
 class signalementManager extends Manager {
 

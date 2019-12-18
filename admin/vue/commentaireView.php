@@ -26,16 +26,16 @@ ob_start();
 
            //mise en page
            $valeur_cadre = ($i%2 == 0) ? 'cadre-2' : 'cadre-1';
-           echo '<tr class="titre-billet '.$valeur_cadre.'"><td colspan="4">'.$valeur["titre"].'</td></tr>';
+           echo '<tr class="titre-billet '.$valeur_cadre.'"><td colspan="4">'.htmlspecialchars($valeur["titre"]).'</td></tr>';
 
-           }
+       }
 
        ?>
 
        <tr class="<?= $valeur_cadre; ?>">
-           <td ><div class="avatar"><img src="<?= $valeur['url_image']; ?>" alt="avatar"></div></td>
-           <td><?= $valeur['pseudo']; ?></td>
-           <td><?= $valeur['commentaire']; ?></td>
+           <td ><div class="avatar"><img src="<?= htmlspecialchars($valeur['url_image']); ?>" alt="avatar"></div></td>
+           <td><?= htmlspecialchars($valeur['pseudo']); ?></td>
+           <td><?= htmlspecialchars($valeur['commentaire']); ?></td>
            <td><?= $valeur['date_format']; ?></td>
        </tr>
 

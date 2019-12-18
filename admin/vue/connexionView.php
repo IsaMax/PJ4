@@ -15,8 +15,8 @@
 require 'navbarSecondaireView.php'; ?>
 
 <div class="bloc-co">
-
-    <form action="./index.php?auth=connexion" method="POST" id="form_connexion">
+    <!--./index.php?auth=connexion-->
+    <form action="se-connecter" method="POST" id="form_connexion">
        <p>
            <label for="email">Email</label>
              <input type="mail" name="mailco" placeholder="Votre email" id="email"  style="

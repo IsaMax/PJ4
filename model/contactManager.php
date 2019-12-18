@@ -1,19 +1,20 @@
 <?php
 
-require_once 'model/Manager.php';
 
 class contactManager extends Manager {
 
-    public function insertMessage($prenom, $mail, $contenu) {
+    public function postMessage() {
 
         $data = $this->dbConnect();
         $contact = $data->prepare('INSERT INTO contact(prenom, mail, contenu) 
                                 VALUES(:prenom, :mail, :contenu)');
-        $success = $contact->execute(array(
-            ':prenom' => $prenom,
-            ':mail' => $mail,
-            ':contenu' => $contenu,
-        ));
+        $success = $contact->execute([
+            ':prenom' => $_POST['prenom'],
+            ':mail' => $_POST['mail'],
+            ':contenu' => $_POST['contenu'],
+        ]);
+
+
         return $success;
     }
 }

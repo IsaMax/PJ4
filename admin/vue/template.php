@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <title><?= $titlePage ?></title>
     <meta charset="utf-8">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="./public/css/admin.css">
+    <link rel="stylesheet" href="public/css/responsive.css">
 </head>
 <body>
 

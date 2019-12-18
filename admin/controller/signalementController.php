@@ -2,9 +2,7 @@
 
 class signalementController {
 
-    public function gererSignalement() {
-
-        require 'model/signalementManager.php';
+    public static function gererSignalement() {
 
         $gs = new signalementManager();
 
@@ -13,9 +11,7 @@ class signalementController {
         require 'vue/signalementView.php';
     }
 
-    public function traitementSignalement() {
-
-        require 'model/signalementManager.php';
+    public static function traitementSignalement() {
 
         $ts = new signalementManager();
 
@@ -28,7 +24,7 @@ class signalementController {
                 $ts->supprimerSignalement($id);
             }
         }
-        header('Location: index.php');
+        header('Location: accueil');
     }
 
 }

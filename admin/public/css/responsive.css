@@ -1,0 +1,91 @@
+@media all and (max-width: 1300px) {
+
+    .container-bloc-infos { flex-wrap: wrap; justify-content: center; }
+    .bloc-total { margin-top: 1rem; }
+    .illustration-chapitre { height: 200px; }
+}
+
+@media all and (max-width: 1300px) {
+    .bloc-total { font-size: .9em; }
+    .bloc-total { width: 45%; }
+}
+
+@media all and (max-width: 948px) {
+    
+}
+
+@media all and (max-width: 888px) {
+
+    .bloc-total { width: 325px; }
+    section.bloc-global .aside-verticale { width: 220px; }
+    .bloc-chapitre { width: 325px; }
+}
+
+@media all and (max-width: 650px) {
+
+    .container-bloc-infos .bloc-total:not(:first-child) { margin-top: 2rem; }
+    .container-bloc-articles { margin-top: 1rem; }
+    .auteur { justify-content: center;  background-color: #33414e;
+        width: 100px; }
+
+    .auteur a:after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 4px;
+        background: #f5bb00;
+        transform: translate(-20px,12px) rotate(0);
+        transition: transform .3s;
+    }
+
+    .auteur a:before {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 4px;
+        background: #f5bb00;
+        transform: translate(-20px,-12px) rotate(0);
+        transition: transform .3s;
+    }
+
+    .auteur a {
+        width: 40px;
+        height: 4px;
+        background: #f5bb00;
+        position: relative;
+        transition: transform .3s;
+    }
+
+    .auteur p { display: none; }
+
+    section.bloc-global .aside-verticale.active {
+        transform: translateX(0);
+        display: block;
+        position: absolute;
+        height: 100vh;
+        width: 240px;
+        z-index: 55;
+    }
+
+    section.bloc-global .aside-verticale {
+        transform: translateX(-500px);
+        position: absolute;
+        z-index: 55;
+        width: 240px;
+        height: 100vh;
+    }
+
+    section.bloc-central {
+        width: 100%;
+    }
+
+    p.titre-part-edit {
+        font-size: 1.5em;
+        left: 41%;
+    }
+}
+
+@media all and (max-width: 650px) {
+
+
+}

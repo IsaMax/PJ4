@@ -24,24 +24,7 @@ $(function() {
 
     }, 1000)
 
-
-
     //vérification formulaires inscription et connexion avec ajax
-/*
-    $('#form_inscription .btn_envoyer').click(function(e) {
-
-        $form_inscr = $('#form_inscription').serialize();
-        ajaxForm('inscription',$form_inscr);
-    })
-
-    $('#form_connexion .btn_envoyer').click(function(e) {
-
-        $form_co = $('#form_connexion').serialize();
-        ajaxForm('connexion',$form_co);
-    })*/
-
-
-
 
     function ajaxForm(auth, infos) {
         $.ajax({
@@ -78,8 +61,30 @@ $(function() {
 
 
     // TinyMCE
-
     tinymce.init({
         selector: '#contenu_edit'
     });
+
+
+    //menu au click
+
+    $('.auteur a').click(function(e) {
+
+        e.preventDefault();
+
+        let menuVertical = $('.bloc-global .aside-verticale');
+
+        if($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            menuVertical.removeClass('active');
+        }
+
+        else {
+            if($(window).width() <= '650') {
+                $(this).addClass('active');
+                menuVertical.addClass('active');
+
+            }
+        }
+    })
 })

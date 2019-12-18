@@ -1,10 +1,8 @@
 <?php
 
-require 'model/commentaireManager.php';
-
 class commentaireController {
 
-    public function afficherCommentaires() {
+    public static function afficherCommentaires() {
 
         $ac = new commentaireManager;
 

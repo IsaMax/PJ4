@@ -1,12 +1,11 @@
 <?php
 
-require 'model/homeManager.php';
 
 class homeController {
 
-    public function afficherChapitre() {
+    public static function afficherChapitre() {
 
-        $hm = new homeManager();
+        $hm = new homeManager;
 
         // récupère les chapitres
         $reqs = $hm->appelerChapitres();
@@ -14,9 +13,11 @@ class homeController {
         // récupère les signalements
         $dsrep = $hm->rechercheSignalement();
 
-        // récupère les signalements
+        // compte les messages
         $rmrep = $hm->rechercheMessage();
 
+        // compte les billets
+        $nbrbillet = $hm->compteNombreBillets();
 
         require 'vue/homepageView.php';
     }

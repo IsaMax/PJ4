@@ -1,63 +1,56 @@
+
+<!-- SLIDER HOMEPAGE -->
 <?php
+ob_start();
+
+$i = 0;
+
+ echo ' <div class="container-slider"><div class="bloc-photos">';
+
+ foreach($stories as $storyData) {
+     $i++;
+?>
+     <div class="photo-slider" style="background-image: url(./admin/<?= htmlspecialchars($storyData["lien_image"])?>); "></div>
+
+  <?php
+     if($i == 4) {
+         break;
+     }
+ }
+
+ echo '</div><div class="bloc-visible">';
+
+ $i = 0;
+foreach($stories as $storyData) {
+    $i++;
+ ?>
+
+     <div class="bloc-sombre-<?= $i; ?>
+     <?php if($i == 1) {echo'active';} ?>">
+         <div class="bloc-text">
+             <p class="book-name">Journal de bord de la navigatrice Irina Oneguine</p>
+             <a href="histoire/chapitre-<?= $storyData['id']; ?>"><h2 class="bloc-title">
+                    <?= htmlspecialchars($storyData['titre']); ?> </h2></a>
+             <p class="date"><?= htmlspecialchars($storyData['publi_billet']); ?></p>
+             <p class="bloc-button"><a href="histoire/chapitre-<?= strip_tags($storyData['id']); ?>">Découvrir</a>
+             </p>
+         </div>
+     </div>
+
+    <?php
+    if($i == 4) {
+        break;
+    }
+    }
+    echo '</div></div>';
+
+$slider = ob_get_clean();
+
 ob_start();
 ?>
 
-<div class="container-slider">
-    <div class="bloc-photos">
-        <div class="photo1" data-url-photo="https://www.iledebatz.net/wp-content/uploads/2019/06/ile-de-batz02.jpg" ></div>
-        <div class="photo2" data-url-photo="https://www.iledebatz.net/wp-content/uploads/2019/06/ile-de-batz03.jpg" ></div>
-        <div class="photo3" data-url-photo="https://www.iledebatz.net/wp-content/uploads/2019/06/ile-de-batz01.jpg" ></div>
-        <div class="photo4" data-url-photo="http://www.maximumwall.com/wp-content/uploads/2015/07/fonds-ecran-ile-paradisique-3.jpg" ></div>
-    </div>
-
-    <div class="bloc-visible">
-        <div class="bloc-sombre-1 active">
-            <div class="bloc-text">
-                <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
-                <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>  
-                <p class="date">10 avr 2012</p>
-                <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
-            </div>
-        </div>
-
-        <div class="bloc-sombre-2">
-            <div class="bloc-text">
-                <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
-                <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
-                <p class="date">10 avr 2012</p>   
-                <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
-            </div>
-        </div>
-
-        <div class="bloc-sombre-3">
-            <div class="bloc-text">
-                <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
-                <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
-                <p class="date">10 avr 2012</p>    
-                <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
-            </div>
-        </div>
-
-        <div class="bloc-sombre-4">
-            <div class="bloc-text">
-                <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
-                <a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>"><h2 class="bloc-title"> titre de l'article </h2></a>
-                <p class="date">10 avr 2012</p>    
-                <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-$slider = ob_get_clean(); 
-
-
-ob_start();
-?>
 
 <!-- ************* BLOC CHAPITRES *************  -->
-
 <div class="bloc-items-left">
 <?php
 $i = 0;
@@ -65,13 +58,13 @@ foreach($stories as $storyData) {
 ?>
     <div class="post-item">
         <div class="bloc-img">
-            <div></div>
+            <div style="background-image: url(./admin/<?= htmlspecialchars($storyData['lien_image'])?>);"></div>
             <div class="hover-effect">
                 <i class=""></i>
             </div>
         </div>
         <div class="bloc-text">
-            <p class="book-name">LIFE & STYLE , PHOTOGRAPH , TRAVEL</p>
+            <p class="book-name">Journal de bord de la navigatrice Irina Oneguine</p>
             <h2 class="bloc-title"> <?= htmlspecialchars($storyData['titre']); ?> </h2>
             <div class="bloc-infos">
                 <div class="author-part">
@@ -84,11 +77,16 @@ foreach($stories as $storyData) {
                 </div>
                 <div class="comments-part">
                     <i class="fa fa-comments-o"></i>
-                    <span><?= $nbrComments[$i]["nbrComms"]; ?></span>
+
+                    <?php
+                    $nbrcoms = (is_null($nbrComments[$i]["nbrComms"])) ? '0' : $nbrComments[$i]["nbrComms"];
+
+                   echo '<span>'.$nbrcoms.'</span>';
+                    ?>
                 </div>
             </div>
-            <p class="bloc-teaser"> <?= substr(htmlspecialchars($storyData['contenu']), 0, 100) . "..."; ?> </p>
-            <p class="bloc-button"><a href="index.php?action=histoire&amp;chapitre=<?= $storyData['id']; ?>">Découvrir</a></p>
+            <p class="bloc-teaser"> <?= substr(strip_tags($storyData['contenu']), 0, 100) . "..."; ?> </p>
+            <p class="bloc-button"><a href="histoire/chapitre-<?= strip_tags($storyData['id']); ?>">Découvrir</a></p>
         </div>
     </div>
     
@@ -97,20 +95,19 @@ foreach($stories as $storyData) {
 </div>
 
 <!-- ************* BLOC DERNIER CHAPITRE *************  -->
-
 <?php
 $firstContentLeft = ob_get_clean();
 ob_start();
 ?>
 <div class="book-full">
-    <h3>L'Histoire</h3>
+    <h3>Derniers chapitres</h3>
     <?php
     while($recentStoriesData = $recentStories->fetch()) {
     ?>
         <div class="chapter">
-            <div class="thumbnail"></div>
+            <div class="thumbnail" style="background-image: url(./admin/<?= $recentStoriesData['lien_image']; ?>); "></div>
                 <div>
-                    <h4> <a href="index.php?action=histoire&amp;chapitre=<?= $recentStoriesData['id']; ?>">
+                    <h4> <a href="histoire/chapitre-<?= strip_tags($recentStoriesData['id']); ?>">
                     <?= htmlspecialchars($recentStoriesData['titre']); ?></a>
                     </h4>
                 </div>
@@ -121,7 +118,6 @@ ob_start();
 </div>
 
 <!-- ************* BLOC COMMENTAIRES *************  -->
-
 <?php
 $firstContentRight = ob_get_clean();
 ob_start();
@@ -133,12 +129,12 @@ ob_start();
     while($recentCommentsData = $recentComments->fetch()) {
         ?>
         <div class="comm">
-            <div class="avatar">
+            <div class="avatar" style="background-image: url(<?= $recentCommentsData['url_image'] ?>);">
             </div>
             <div class="comms-body">
                 <p class="comm-author"> <?= htmlspecialchars($recentCommentsData['pseudo']); ?></p>
                 <p class="comm-text"> <?= substr(htmlspecialchars($recentCommentsData['commentaire']), 0, 35) . "..."; ?> </p>
-                <p class="comm-more"><a href="index.php?action=histoire&amp;chapitre=<?= htmlspecialchars($recentCommentsData['id_billet'])."#".htmlspecialchars($recentCommentsData['id']); ?>">voir &raquo;</a></p>
+                <p class="comm-more"><a href="histoire/chapitre-<?= htmlspecialchars($recentCommentsData['id_billet'])."#".htmlspecialchars($recentCommentsData['id']); ?>">voir &raquo;</a></p>
             </div>
         </div>
     <?php
