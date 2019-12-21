@@ -95,8 +95,10 @@ else  {
     switch($_GET['auth']) {
 
         case 'connexion':
+            require 'controller/authentificationController.php';
+            $co = new authentificationController;
 
-            AuthentificationController::connexion();
+            $co->connexion();
             break;
         case 'inscription':
 

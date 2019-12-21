@@ -6,6 +6,6 @@ class erreurController {
 
 
             require 'view/404/404View.php';
-       
+
     }
 }

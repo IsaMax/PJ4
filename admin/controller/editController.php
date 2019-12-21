@@ -17,7 +17,7 @@ class editController {
 
         if(isset($_POST['titre']) AND isset($_POST['contenu']) AND isset($_FILES['lien_image'])) {
 
-            $cheminFichier = $this->traitementDuFichier();
+            $cheminFichier = self::traitementDuFichier();
 
             $boolEnregistre = $ec->enregistrerChapitre($cheminFichier);
 
